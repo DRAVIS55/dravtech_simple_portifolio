@@ -1,0 +1,1295 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ferdinand Omanyala — Africa's Fastest Man | Professional Portfolio</title>
+  <meta name="description" content="Official portfolio of Ferdinand Omanyala, African 100m record holder, Commonwealth Champion, and Olympian.">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --accent: #D4AF37; /* gold */
+      --accent-dark: #B8860B;
+      --dark: #0f1724;   /* near-black */
+      --dark-light: #1e293b;
+      --muted: #64748b;
+      --muted-light: #94a3b8;
+      --white: #ffffff;
+      --light-bg: #f8fafc;
+      --glass: rgba(255,255,255,0.08);
+      --max-width: 1200px;
+      --border-radius: 12px;
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Roboto', system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header & Navigation */
+    header {
+      background: var(--dark);
+      color: var(--white);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: var(--white);
+      text-decoration: none;
+    }
+    
+    .logo span {
+      color: var(--accent);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+    
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: var(--transition);
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      padding: 60px 0;
+      background: linear-gradient(135deg, rgba(15,23,36,0.03) 0%, rgba(212,175,55,0.05) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, rgba(212,175,55,0) 70%);
+      border-radius: 50%;
+      z-index: 0;
+    }
+    
+    .hero-content {
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .eyebrow {
+      font-size: 14px;
+      color: var(--accent);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin: 12px 0;
+      color: var(--dark);
+    }
+    
+    .hero-subtitle {
+      font-size: 20px;
+      color: var(--muted);
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+    
+    .stats {
+      display: flex;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    
+    .stat {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      padding: 16px;
+      min-width: 110px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: var(--transition);
+    }
+    
+    .stat:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    
+    .stat small {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .stat strong {
+      display: block;
+      font-size: 20px;
+      color: var(--dark);
+      font-weight: 700;
+    }
+    
+    .cta {
+      display: flex;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--dark);
+      color: var(--white);
+      padding: 12px 24px;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn:hover {
+      background: var(--dark-light);
+      transform: translateY(-2px);
+    }
+    
+    .btn-outline {
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      background: transparent;
+      padding: 10px 22px;
+    }
+    
+    .btn-outline:hover {
+      background: var(--accent);
+      color: var(--white);
+    }
+    
+    /* Hero Image */
+    .hero-image {
+      position: relative;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      transform: perspective(1000px) rotateY(-5deg);
+      transition: var(--transition);
+    }
+    
+    .hero-image:hover {
+      transform: perspective(1000px) rotateY(0deg);
+    }
+    
+    .hero-image img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+      transition: var(--transition);
+    }
+    
+    .hero-image:hover img {
+      transform: scale(1.03);
+    }
+    
+    .image-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(15,23,36,0.8);
+      color: var(--white);
+      padding: 12px 16px;
+      font-size: 14px;
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 0;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    
+    .section-header h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 12px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+    }
+    
+    .section-header p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: 20px auto 0;
+    }
+    
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+    
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    
+    .card {
+      background: var(--white);
+      padding: 24px;
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: var(--transition);
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .card h3 {
+      margin: 0 0 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .card h3 i {
+      color: var(--accent);
+    }
+    
+    /* Timeline */
+    .timeline {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .timeline li {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    
+    .timeline .year {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 80px;
+      font-size: 18px;
+    }
+    
+    .timeline-content {
+      flex: 1;
+    }
+    
+    .timeline-content strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+    
+    /* Records */
+    .records-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    
+    .record-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      background: var(--light-bg);
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .record-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: var(--transition);
+    }
+    
+    .record-item:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .record-item:hover {
+      background: var(--accent);
+      color: var(--white);
+    }
+    
+    .record-item:hover * {
+      color: var(--white);
+    }
+    
+    .record-value {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    
+    .record-item:hover .record-value {
+      color: var(--white);
+    }
+    
+    .record-label {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+    
+    .record-details {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 16px;
+    }
+    
+    .gallery-item {
+      position: relative;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      height: 200px;
+      transition: var(--transition);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(15,23,36,0.8);
+      color: var(--white);
+      padding: 12px;
+      transform: translateY(100%);
+      transition: var(--transition);
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+
+    /* Sponsors */
+    .sponsors {
+      background: var(--light-bg);
+      padding: 40px 0;
+    }
+    
+    .sponsors-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    
+    .sponsor-logo {
+      height: 60px;
+      filter: grayscale(100%);
+      opacity: 0.7;
+      transition: var(--transition);
+    }
+    
+    .sponsor-logo:hover {
+      filter: grayscale(0);
+      opacity: 1;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--accent);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    
+    .contact-details h4 {
+      margin-bottom: 4px;
+      font-size: 18px;
+    }
+    
+    .contact-details p {
+      color: var(--muted);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    
+    .social-link {
+      width: 40px;
+      height: 40px;
+      background: var(--dark);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .social-link:hover {
+      background: var(--accent);
+      transform: translateY(-3px);
+    }
+    
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .form-group label {
+      font-weight: 500;
+      color: var(--dark);
+    }
+    
+    .form-control {
+      padding: 12px 16px;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--border-radius);
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      transition: var(--transition);
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(212,175,55,0.2);
+    }
+    
+    textarea.form-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: var(--white);
+      padding: 40px 0 20px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    
+    .footer-logo span {
+      color: var(--accent);
+    }
+    
+    .footer-about p {
+      color: var(--muted-light);
+      margin-bottom: 20px;
+    }
+    
+    .footer-links h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      margin-bottom: 16px;
+      color: var(--white);
+    }
+    
+    .footer-links ul {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 8px;
+    }
+    
+    .footer-links a {
+      color: var(--muted-light);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      text-align: center;
+      color: var(--muted-light);
+      font-size: 14px;
+    }
+
+    /* Parallax Section */
+    .parallax {
+      background-image: url('https://images.unsplash.com/photo-1550675897-2dffd7eb5fb1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .parallax::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15,23,36,0.7);
+    }
+    
+    .parallax-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: var(--white);
+      max-width: 800px;
+      padding: 0 20px;
+    }
+    
+    .parallax-content h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 36px;
+      margin-bottom: 16px;
+    }
+    
+    .parallax-content p {
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .footer-about {
+        grid-column: 1 / -1;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--dark);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      }
+      
+      .nav-links.active {
+        display: flex;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 40px 0;
+        gap: 30px;
+      }
+      
+      h1 {
+        font-size: 36px;
+      }
+      
+      .hero-subtitle {
+        font-size: 18px;
+      }
+      
+      .stats {
+        flex-wrap: wrap;
+      }
+      
+      .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .parallax {
+        background-attachment: scroll;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 16px;
+      }
+      
+      h1 {
+        font-size: 32px;
+      }
+      
+      .section-header h2 {
+        font-size: 28px;
+      }
+      
+      .cta {
+        flex-direction: column;
+      }
+      
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav-container">
+      <a href="#" class="logo">Ferdinand <span>Omanyala</span></a>
+      
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#career">Career</a>
+        <a href="#records">Records</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container" style="display: contents;">
+      <div class="hero-content">
+        <div class="eyebrow">Africa's Fastest Man</div>
+        <h1>Ferdinand Omanyala</h1>
+        <p class="hero-subtitle">Commonwealth Champion • African Record Holder • Olympian</p>
+
+        <!-- Key stats -->
+        <div class="stats">
+          <div class="stat">
+            <small>100m PB</small>
+            <strong>9.77s</strong>
+          </div>
+          <div class="stat">
+            <small>Born</small>
+            <strong>2 Jan 1996</strong>
+          </div>
+          <div class="stat">
+            <small>Events</small>
+            <strong>100m · 200m</strong>
+          </div>
+        </div>
+
+        <p style="color: var(--muted); line-height: 1.6; margin-bottom: 16px;">
+          Ferdinand Omanyala Omurwa is a Kenyan sprinter and the African 100m record holder (9.77s). He made a remarkable transition from rugby to become one of the world's top sprinters through discipline, dedication, and rapid development.
+        </p>
+
+        <div class="cta">
+          <a class="btn" href="#gallery">
+            <i class="fas fa-images"></i> Media & Gallery
+          </a>
+          <a class="btn btn-outline" href="#contact">
+            <i class="fas fa-envelope"></i> Contact/Management
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img src="https://nation.africa/resource/image/4394360/landscape_ratio16x9/1920/1080/9a3e5b9d3e2d2a8e2c1b5c5e5c5e5c5e/Omanyala.jpg" alt="Ferdinand Omanyala in competition">
+        <div class="image-caption">Photo: Ferdinand Omanyala in competition (Source: Nation Africa)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" style="background: var(--light-bg);">
+    <div class="container">
+      <div class="section-header">
+        <h2>About Ferdinand</h2>
+        <p>From rugby player to Africa's fastest man - the remarkable journey of a trailblazing athlete</p>
+      </div>
+      
+      <div class="grid-2">
+        <div class="card">
+          <h3><i class="fas fa-running"></i> Early Career</h3>
+          <p style="color: var(--muted); margin-bottom: 16px;">
+            Omanyala initially played rugby at the University of Nairobi before transitioning to sprinting. His natural speed was quickly recognized, and he began focusing on track events in 2016.
+          </p>
+          <p style="color: var(--muted);">
+            Despite limited resources and training facilities compared to international competitors, Omanyala's dedication and raw talent propelled him to rapid success on the continental and global stage.
+          </p>
+        </div>
+        
+        <div class="card">
+          <h3><i class="fas fa-trophy"></i> Impact & Legacy</h3>
+          <p style="color: var(--muted);">
+            Omanyala has revolutionized sprinting in Kenya and across Africa, proving that the continent can produce world-class sprinters to compete with traditional powerhouses like Jamaica and the United States.
+          </p>
+          <p style="color: var(--muted); margin-top: 16px;">
+            His success has inspired a new generation of African sprinters and brought unprecedented attention to track and field in the region.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parallax Section -->
+  <div class="parallax">
+    <div class="parallax-content">
+      <h2>"The journey of a thousand miles begins with a single step"</h2>
+      <p>Ferdinand Omanyala's remarkable rise from rugby player to Africa's fastest man</p>
+      <a href="#career" class="btn">
+        <i class="fas fa-play-circle"></i> Watch His Journey
+      </a>
+    </div>
+  </div>
+
+  <!-- Career Highlights -->
+  <section id="career">
+    <div class="container">
+      <div class="section-header">
+        <h2>Career Highlights</h2>
+        <p>Key moments in Omanyala's remarkable sprinting career</p>
+      </div>
+      
+      <div class="card">
+        <ul class="timeline">
+          <li>
+            <div class="year">2021</div>
+            <div class="timeline-content">
+              <strong>9.77s — African Record</strong>
+              <p>Set at the Absa Kip Keino Classic in Nairobi, breaking the previous African record and announcing his arrival on the world stage.</p>
+            </div>
+          </li>
+          <li>
+            <div class="year">2022</div>
+            <div class="timeline-content">
+              <strong>Commonwealth Games Gold</strong>
+              <p>Won the 100m gold medal at the Commonwealth Games in Birmingham, defeating a strong field of international sprinters.</p>
+            </div>
+          </li>
+          <li>
+            <div class="year">2022</div>
+            <div class="timeline-content">
+              <strong>African Championships</strong>
+              <p>Crowned 100m champion at the African Athletics Championships in Mauritius, solidifying his status as Africa's premier sprinter.</p>
+            </div>
+          </li>
+          <li>
+            <div class="year">2023</div>
+            <div class="timeline-content">
+              <strong>World Championships</strong>
+              <p>Reached the semifinals at the World Athletics Championships in Budapest, competing against the world's best sprinters.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Records & Personal Bests -->
+  <section id="records" style="background: var(--light-bg);">
+    <div class="container">
+      <div class="section-header">
+        <h2>Records & Personal Bests</h2>
+        <p>Omanyala's fastest times across different events</p>
+      </div>
+      
+      <div class="records-grid">
+        <div class="record-item">
+          <div class="record-value">9.77s</div>
+          <div class="record-label">100m (AR / NR)</div>
+          <div class="record-details">Nairobi, 18 Sept 2021</div>
+        </div>
+        
+        <div class="record-item">
+          <div class="record-value">20.33s</div>
+          <div class="record-label">200m</div>
+          <div class="record-details">Abuja, 2022</div>
+        </div>
+        
+        <div class="record-item">
+          <div class="record-value">6.54s</div>
+          <div class="record-label">60m (indoor)</div>
+          <div class="record-details">Liévin, 2023</div>
+        </div>
+        
+        <div class="record-item">
+          <div class="record-value">9.84s</div>
+          <div class="record-label">100m (Wind Assisted)</div>
+          <div class="record-details">Nairobi, 2023</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sponsors Section -->
+  <section class="sponsors">
+    <div class="container">
+      <div class="section-header">
+        <h2>Official Partners</h2>
+        <p>Brands that support Omanyala's journey</p>
+      </div>
+      
+      <div class="sponsors-grid">
+        <!-- These are placeholder logos - replace with actual sponsor logos -->
+        <img src="https://logos-world.net/wp-content/uploads/2020/04/Adidas-Logo.png" alt="Adidas" class="sponsor-logo" style="height: 40px;">
+        <img src="https://logos-world.net/wp-content/uploads/2020/04/Nike-Logo.png" alt="Nike" class="sponsor-logo" style="height: 40px;">
+        <img src="https://www.odibets.com/img/odibets-logo.png" alt="Odibets" class="sponsor-logo" style="height: 40px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Airtel_Logo.svg/2560px-Airtel_Logo.svg.png" alt="Airtel" class="sponsor-logo" style="height: 40px;">
+      </div>
+    </div>
+  </section>
+
+  <!-- Media & Gallery -->
+  <section id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <h2>Media & Photo Gallery</h2>
+        <p>Action shots and highlights from Omanyala's career</p>
+      </div>
+      
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="https://img.olympics.com/images/image/private/t_s_w960/t_s_16_9_g_auto/f_auto/primary/kdmlw8qjvq9wvqjvq9wv" alt="Omanyala action 1">
+          <div class="gallery-overlay">Commonwealth Games Gold - 2022</div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="https://nation.africa/resource/image/4394362/landscape_ratio16x9/1920/1080/9a3e5b9d3e2d2a8e2c1b5c5e5c5e5c5e/Omanyala2.jpg" alt="Omanyala action 2">
+          <div class="gallery-overlay">Kip Keino Classic - 2023</div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="https://img.olympics.com/images/image/private/t_s_w960/t_s_16_9_g_auto/f_auto/primary/kdmlw8qjvq9wvqjvq9wv" alt="Omanyala action 3">
+          <div class="gallery-overlay">World Championships - 2023</div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="https://nation.africa/resource/image/4394364/landscape_ratio16x9/1920/1080/9a3e5b9d3e2d2a8e2c1b5c5e5c5e5c5e/Omanyala3.jpg" alt="Omanyala portrait">
+          <div class="gallery-overlay">Training Session</div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="https://img.olympics.com/images/image/private/t_s_w960/t_s_16_9_g_auto/f_auto/primary/kdmlw8qjvq9wvqjvq9wv" alt="Omanyala celebration">
+          <div class="gallery-overlay">Victory Celebration</div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="https://nation.africa/resource/image/4394366/landscape_ratio16x9/1920/1080/9a3e5b9d3e2d2a8e2c1b5c5e5c5e5c5e/Omanyala4.jpg" alt="Omanyala with fans">
+          <div class="gallery-overlay">With Fans</div>
+        </div>
+      </div>
+      
+      <p style="color: var(--muted); font-size: 14px; text-align: center; margin-top: 20px;">
+        Image sources: Nation Africa, Olympics.com, and press photos. Replace with licensed images as needed.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" style="background: var(--light-bg);">
+    <div class="container">
+      <div class="section-header">
+        <h2>Contact & Management</h2>
+        <p>Get in touch for sponsorship, appearances, or media inquiries</p>
+      </div>
+      
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Management</h4>
+              <p>For professional inquiries and sponsorship opportunities</p>
+              <p style="margin-top: 8px;"><strong>Email:</strong> management@omanyala.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Appearances</h4>
+              <p>For speaking engagements and public appearances</p>
+              <p style="margin-top: 8px;"><strong>Email:</strong> events@omanyala.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-microphone"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Media</h4>
+              <p>For press interviews and media requests</p>
+              <p style="margin-top: 8px;"><strong>Email:</strong> media@omanyala.com</p>
+            </div>
+          </div>
+          
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="contact-form">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" class="form-control" placeholder="Your Name">
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" class="form-control" placeholder="your.email@example.com">
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" class="form-control" placeholder="Inquiry Subject">
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" class="form-control" placeholder="Your message..."></textarea>
+          </div>
+          
+          <button type="submit" class="btn">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-about">
+          <div class="footer-logo">Ferdinand <span>Omanyala</span></div>
+          <p>Official portfolio of Ferdinand Omanyala, African 100m record holder, Commonwealth Champion, and Olympian. This site celebrates his achievements and promotes his athletic career.</p>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#career">Career</a></li>
+            <li><a href="#records">Records</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">News & Updates</a></li>
+            <li><a href="#">Event Schedule</a></li>
+            <li><a href="#">Media Kit</a></li>
+            <li><a href="#">Partnerships</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2023 Ferdinand Omanyala. All rights reserved. | Portfolio generated from public sources and official information.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple mobile menu toggle
+    document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    });
+    
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', function() {
+        if (window.innerWidth <= 768) {
+          document.querySelector('.nav-links').classList.remove('active');
+        }
+      });
+    });
+    
+    // Update year in footer
+    document.querySelector('.footer-bottom p').innerHTML = document.querySelector('.footer-bottom p').innerHTML.replace('2023', new Date().getFullYear());
+    
+    // Add scroll animation
+    window.addEventListener('scroll', function() {
+      const elements = document.querySelectorAll('.card, .record-item, .gallery-item');
+      
+      elements.forEach(element => {
+        const position = element.getBoundingClientRect();
+        
+        // If element is in viewport
+        if(position.top < window.innerHeight && position.bottom >= 0) {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }
+      });
+    });
+    
+    // Initialize elements with opacity 0 for animation
+    document.addEventListener('DOMContentLoaded', function() {
+      const elements = document.querySelectorAll('.card, .record-item, .gallery-item');
+      
+      elements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      });
+      
+      // Trigger scroll event to check initial visibility
+      window.dispatchEvent(new Event('scroll'));
+    });
+  </script>
+</body>
+</html>

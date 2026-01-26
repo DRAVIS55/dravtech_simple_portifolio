@@ -1,0 +1,248 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Messages Panel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #0f2027; /* fallback */
+      background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+      color: #fff;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    canvas#backgroundCanvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-top: 40px;
+      color: #00e5ff;
+      text-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+    }
+
+    table {
+      width: 90%;
+      max-width: 1000px;
+      margin: 30px auto;
+      border-collapse: collapse;
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    thead {
+      background-color: #00b894;
+    }
+
+    th, td {
+      padding: 14px 16px;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th {
+      color: #fff;
+    }
+
+    td {
+      background-color: rgba(255, 255, 255, 0.05);
+      color: #e0f7fa;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      word-break: break-word;
+    }
+
+    tbody tr:nth-child(even) td {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .empty-message {
+      text-align: center;
+      padding: 20px;
+      color: #ccc;
+    }
+
+    .buttons {
+      text-align: center;
+      margin: 30px auto 50px;
+    }
+
+    .buttons a,
+    .buttons button {
+      background-color: #00b894;
+      color: white;
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-weight: 600;
+    }
+
+    .buttons button:hover,
+    .buttons a:hover {
+      background-color: #009e7a;
+    }
+
+    .buttons button.delete {
+      background-color: #d63031;
+    }
+
+    .buttons button.delete:hover {
+      background-color: #c0392b;
+    }
+
+    @media (max-width: 768px) {
+      th, td {
+        font-size: 13px;
+        padding: 10px;
+      }
+
+      table {
+        width: 95%;
+      }
+
+      h1 {
+        font-size: 2em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tr {
+        margin-bottom: 20px;
+      }
+
+      td {
+        padding: 10px;
+        position: relative;
+        text-align: right;
+      }
+
+      td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        font-weight: bold;
+        color: #80cbc4;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="backgroundCanvas"></canvas>
+
+  <h1>Messages Panel</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Message</th>
+        <th>Sent At</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for msg in messages %}
+        <tr>
+          <td data-label="Name">{{ msg.name }}</td>
+          <td data-label="Email">{{ msg.email }}</td>
+          <td data-label="Message">{{ msg.message }}</td>
+          <td data-label="Sent At">{{ msg.created_at }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="4" class="empty-message">No messages yet.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="buttons">
+    <a href="/">Return Home</a>
+
+    <form method="post" action="{% url 'clear_messages' %}" style="display:inline;">
+      {% csrf_token %}
+      <button type="submit" class="delete">Clear All Messages</button>
+    </form>
+  </div>
+
+  <script>
+    // Simple animated background dots
+    const canvas = document.getElementById("backgroundCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    const particles = Array.from({ length: 80 }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      dx: (Math.random() - 0.5) * 0.8,
+      dy: (Math.random() - 0.5) * 0.8,
+      radius: Math.random() * 2 + 1,
+      color: `rgba(0, 229, 255, ${Math.random() * 0.6 + 0.2})`
+    }));
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+
+        p.x += p.dx;
+        p.y += p.dy;
+
+        if (p.x < 0 || p.x > width) p.dx *= -1;
+        if (p.y < 0 || p.y > height) p.dy *= -1;
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    window.addEventListener("resize", () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+  </script>
+
+</body>
+</html>

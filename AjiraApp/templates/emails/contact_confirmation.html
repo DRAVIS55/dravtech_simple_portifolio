@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Contacting DravTech</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        /* Email container */
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Header */
+        .email-header {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            padding: 40px 30px;
+            text-align: center;
+            color: white;
+        }
+        
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .header-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .header-subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        /* Content */
+        .email-content {
+            padding: 40px 30px;
+        }
+        
+        .greeting {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #1e293b;
+        }
+        
+        .confirmation-message {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 30px;
+        }
+        
+        .confirmation-message p {
+            margin-bottom: 10px;
+        }
+        
+        /* Inquiry details */
+        .details-section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            color: #1e293b;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .details-grid {
+            display: grid;
+            gap: 15px;
+            background-color: #f8fafc;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .detail-item {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 15px;
+        }
+        
+        @media (max-width: 480px) {
+            .detail-item {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #64748b;
+        }
+        
+        .detail-value {
+            color: #1e293b;
+            word-break: break-word;
+        }
+        
+        /* Message box */
+        .message-box {
+            background-color: #f0f9ff;
+            border: 1px solid #e0f2fe;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 10px;
+        }
+        
+        .message-content {
+            white-space: pre-wrap;
+            line-height: 1.8;
+            color: #0c4a6e;
+        }
+        
+        /* Next steps */
+        .next-steps {
+            background-color: #f0fdf4;
+            border: 1px solid #dcfce7;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .next-steps-title {
+            font-size: 18px;
+            color: #166534;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .steps-list {
+            list-style: none;
+        }
+        
+        .steps-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .steps-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #16a34a;
+            font-weight: bold;
+        }
+        
+        /* Contact info */
+        .contact-info {
+            background-color: #f8fafc;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 30px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .contact-item {
+            margin-bottom: 15px;
+        }
+        
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .contact-label {
+            font-weight: 600;
+            color: #64748b;
+            margin-bottom: 5px;
+        }
+        
+        /* Footer */
+        .email-footer {
+            background-color: #1e293b;
+            color: #cbd5e1;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: #334155;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+        }
+        
+        .footer-text {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        
+        .footer-address {
+            font-size: 14px;
+            color: #94a3b8;
+            margin-bottom: 5px;
+        }
+        
+        .unsubscribe {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 20px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .email-header {
+                padding: 30px 20px;
+            }
+            
+            .email-content {
+                padding: 30px 20px;
+            }
+            
+            .header-title {
+                font-size: 20px;
+            }
+            
+            .section-title {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="email-header">
+            <div class="logo">
+                <span class="logo-text">DravTech</span>
+            </div>
+            <h1 class="header-title">Thank You for Contacting Us!</h1>
+            <p class="header-subtitle">We've received your inquiry and will get back to you soon.</p>
+        </div>
+        
+        <!-- Content -->
+        <div class="email-content">
+            <div class="greeting">
+                <p>Hello <strong>{{ name }}</strong>,</p>
+                <p>Thank you for reaching out to DravTech Company. We appreciate you taking the time to contact us.</p>
+            </div>
+            
+            <div class="confirmation-message">
+                <p>Your inquiry has been successfully submitted at <strong>{{ submitted_at }}</strong>.</p>
+                <p>Our team typically responds to inquiries within <strong>{{ reply_time }}</strong>.</p>
+            </div>
+            
+            <!-- Inquiry Details -->
+            <div class="details-section">
+                <h2 class="section-title">Your Inquiry Details</h2>
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <span class="detail-label">Name:</span>
+                        <span class="detail-value">{{ name }}</span>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <span class="detail-label">Email:</span>
+                        <span class="detail-value">{{ email }}</span>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <span class="detail-label">Phone:</span>
+                        <span class="detail-value">{{ phone }}</span>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <span class="detail-label">Service Interest:</span>
+                        <span class="detail-value">{{ service }}</span>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <span class="detail-label">Submitted At:</span>
+                        <span class="detail-value">{{ submitted_at }}</span>
+                    </div>
+                </div>
+                
+                {% if message %}
+                <div style="margin-top: 20px;">
+                    <div class="detail-label" style="margin-bottom: 10px;">Your Message:</div>
+                    <div class="message-box">
+                        <div class="message-content">{{ message }}</div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            
+            <!-- Next Steps -->
+            <div class="next-steps">
+                <h3 class="next-steps-title">What Happens Next?</h3>
+                <ul class="steps-list">
+                    <li>Our team will review your inquiry and requirements</li>
+                    <li>We'll assess the best solutions for your needs</li>
+                    <li>You'll receive a personalized response from our experts</li>
+                    <li>We may schedule a call to better understand your requirements</li>
+                    <li>You'll receive a detailed proposal and timeline</li>
+                </ul>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-label">Need Immediate Assistance?</div>
+                    <div>Call us at: <strong>+254 758 067 458</strong></div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-label">Business Hours</div>
+                    <div>Monday - Friday: 8:00 AM - 6:00 PM EAT</div>
+                    <div>Saturday: 9:00 AM - 2:00 PM EAT</div>
+                </div>
+            </div>
+            
+            <!-- Additional Note -->
+            <div style="text-align: center; color: #64748b; font-size: 14px; line-height: 1.6; padding: 20px; border-top: 1px solid #e2e8f0;">
+                <p><strong>Please note:</strong> This is an automated confirmation email. If you need to update your inquiry or have additional questions, please reply to this email or contact us directly.</p>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="email-footer">
+            <div class="social-links">
+                <a href="https://twitter.com/drav_tech" class="social-link" target="_blank">
+                    𝕏
+                </a>
+                <a href="https://facebook.com/drav_tech" class="social-link" target="_blank">
+                    f
+                </a>
+                <a href="https://linkedin.com/company/drav_tech" class="social-link" target="_blank">
+                    in
+                </a>
+                <a href="https://instagram.com/drav_tech" class="social-link" target="_blank">
+                    📷
+                </a>
+            </div>
+            
+            <p class="footer-text">
+                <strong>{{ site_name }}</strong><br>
+                Professional Systems Design & Photography Services
+            </p>
+            
+            <p class="footer-address">
+                Nairobi, Kenya
+            </p>
+            
+            <p class="footer-text">
+                Email: {{ site_email }}<br>
+                Phone: +254 758 067 458
+            </p>
+            
+            <p class="unsubscribe">
+                © 2024 {{ site_name }}. All rights reserved.<br>
+                This email was sent to {{ email }} because you contacted us through our website.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

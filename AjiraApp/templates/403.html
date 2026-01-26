@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>403 - Access Denied | DravTech Marketplace</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+        :root {
+            --primary-color: #4f46e5;
+            --primary-dark: #4338ca;
+            --secondary-color: #7c3aed;
+            --accent-color: #10b981;
+            --dark-color: #0f172a;
+            --light-color: #f8fafc;
+            --gray-color: #64748b;
+            --danger-color: #ef4444;
+            --warning-color: #f59e0b;
+            --success-color: #10b981;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 20px;
+            position: relative;
+            color: white;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+        }
+
+        .error-container {
+            text-align: center;
+            max-width: 800px;
+            z-index: 1;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .error-code {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 200px;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: lockShake 0.5s ease-in-out infinite alternate, glow 2s ease-in-out infinite alternate;
+            text-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes lockShake {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
+            to { text-shadow: 0 0 30px rgba(255, 255, 255, 0.6); }
+        }
+
+        .error-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .error-message {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .error-image {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 40px;
+            position: relative;
+            animation: floatImage 6s ease-in-out infinite;
+        }
+
+        @keyframes floatImage {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(3deg); }
+            66% { transform: translateY(10px) rotate(-3deg); }
+        }
+
+        .error-image svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+        }
+
+        .access-info {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            animation: slideUp 0.8s ease-out 0.3s both;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .access-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .access-list {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .access-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .access-list li:last-child {
+            border-bottom: none;
+        }
+
+        .access-list i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .fa-check {
+            color: var(--success-color);
+        }
+
+        .fa-times {
+            color: var(--danger-color);
+        }
+
+        .fa-question {
+            color: var(--warning-color);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #f59e0b;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .error-footer {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-top: 40px;
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        .error-footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: opacity 0.3s ease;
+        }
+
+        .error-footer a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: floatAround 20s infinite linear;
+        }
+
+        @keyframes floatAround {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(100vw, 100vh) rotate(360deg); }
+        }
+
+        .login-prompt {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 500px;
+            margin: 40px auto;
+            animation: slideUp 0.8s ease-out 0.5s both;
+        }
+
+        .login-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .login-input {
+            padding: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .login-input:focus {
+            outline: none;
+            border-color: white;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .login-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .login-submit {
+            padding: 16px;
+            background: white;
+            color: #f59e0b;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 150px;
+            }
+            
+            .error-title {
+                font-size: 36px;
+            }
+            
+            .error-message {
+                font-size: 18px;
+                padding: 0 20px;
+            }
+            
+            .error-image {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .access-info {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .error-code {
+                font-size: 120px;
+            }
+            
+            .error-title {
+                font-size: 28px;
+            }
+            
+            .error-message {
+                font-size: 16px;
+            }
+            
+            .error-image {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-element" style="width: 100px; height: 100px; top: 10%; left: 5%; animation-delay: 0s;"></div>
+        <div class="floating-element" style="width: 150px; height: 150px; top: 60%; right: 10%; animation-delay: -5s;"></div>
+        <div class="floating-element" style="width: 80px; height: 80px; bottom: 20%; left: 20%; animation-delay: -10s;"></div>
+        <div class="floating-element" style="width: 120px; height: 120px; top: 30%; right: 20%; animation-delay: -15s;"></div>
+    </div>
+
+    <div class="error-container">
+        <div class="error-code">403</div>
+        <div class="error-title">Access Forbidden</div>
+        <div class="error-message">
+            You don't have permission to access this resource. This area is restricted to authorized personnel only.
+        </div>
+
+        <div class="error-image">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#FFFFFF" d="M50,-76.5C65.4,-69.4,79.2,-57.8,85.1,-43.1C91,-28.4,89,-10.6,85.6,6.5C82.2,23.6,77.5,40,67.4,52.6C57.3,65.2,41.8,74.1,26.2,78.8C10.6,83.5,-5.2,84.1,-19.9,80.1C-34.6,76,-48.3,67.4,-59.1,55.5C-69.9,43.7,-77.8,28.7,-80.5,12.9C-83.1,-2.8,-80.6,-19.4,-73.8,-33.9C-67,-48.4,-56,-60.8,-42.4,-68.6C-28.9,-76.3,-14.4,-79.5,0.7,-80.6C15.9,-81.7,31.8,-80.8,50,-76.5Z" transform="translate(100 100)" />
+            </svg>
+        </div>
+
+        <div class="access-info">
+            <div class="access-title">
+                <i class="fas fa-shield-alt"></i> Access Requirements
+            </div>
+            <ul class="access-list">
+                <li>
+                    <i class="fas fa-check"></i>
+                    <span>Valid admin credentials</span>
+                </li>
+                <li>
+                    <i class="fas fa-times"></i>
+                    <span>Guest access not permitted</span>
+                </li>
+                <li>
+                    <i class="fas fa-question"></i>
+                    <span>IP address: {{ request.META.REMOTE_ADDR|default:"Unknown" }}</span>
+                </li>
+                <li>
+                    <i class="fas fa-clock"></i>
+                    <span>Access attempted at: <span id="accessTime">Loading...</span></span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="login-prompt">
+            <div class="login-title">Already have an account?</div>
+            <form class="login-form" id="loginForm">
+                <input type="text" 
+                       class="login-input" 
+                       placeholder="Username"
+                       id="username">
+                <input type="password" 
+                       class="login-input" 
+                       placeholder="Password"
+                       id="password">
+                <button type="button" class="login-submit" onclick="attemptLogin()">
+                    <i class="fas fa-sign-in-alt"></i> Sign In
+                </button>
+            </form>
+        </div>
+
+        <div class="action-buttons">
+            <a href="{% url 'admin_login' %}" class="btn btn-primary">
+                <i class="fas fa-user-lock"></i> Admin Login
+            </a>
+            <a href="{% url 'marketplace_home' %}" class="btn btn-secondary">
+                <i class="fas fa-home"></i> Go to Homepage
+            </a>
+            <a href="javascript:history.back()" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Go Back
+            </a>
+        </div>
+
+        <div class="error-footer">
+            <a href="{% url 'contact' %}">Request Access</a> • 
+            <a href="{% url 'about_us' %}">About Us</a> • 
+            <a href="{% url 'projects' %}">Our Projects</a> •
+            <a href="#" onclick="showHelp()">Need Help?</a>
+        </div>
+    </div>
+
+    <script>
+        // Set access time
+        document.getElementById('accessTime').textContent = new Date().toLocaleString();
+
+        // Login attempt
+        function attemptLogin() {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            
+            if (!username || !password) {
+                alert('Please enter both username and password.');
+                return;
+            }
+            
+            // Show loading state
+            const button = document.querySelector('.login-submit');
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
+            button.disabled = true;
+            
+            // Simulate login attempt
+            setTimeout(() => {
+                // In a real app, this would redirect to actual login
+                alert('Login functionality would be implemented here.\n\nFor now, please use the Admin Login button.');
+                button.innerHTML = originalText;
+                button.disabled = false;
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
+            }, 1500);
+        }
+
+        // Show help
+        function showHelp() {
+            const helpMessage = `
+Access Denied Help:
+
+Possible Reasons:
+1. You're not logged in as an admin
+2. Your session has expired
+3. You don't have sufficient permissions
+4. IP restriction is enabled
+
+Solutions:
+• Log in with admin credentials
+• Clear browser cookies and cache
+• Contact system administrator
+• Check if VPN is required
+
+Contact: admin@dravtech.com
+Support Hours: 24/7
+            `;
+            alert(helpMessage);
+        }
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'l' && (e.ctrlKey || e.metaKey)) {
+                e.preventDefault();
+                window.location.href = "{% url 'admin_login' %}";
+            } else if (e.key === 'Escape') {
+                window.history.back();
+            } else if (e.key === 'h' && (e.ctrlKey || e.metaKey)) {
+                e.preventDefault();
+                window.location.href = "{% url 'marketplace_home' %}";
+            } else if (e.key === 'Enter' && (document.activeElement === document.getElementById('username') || 
+                      document.activeElement === document.getElementById('password'))) {
+                e.preventDefault();
+                attemptLogin();
+            }
+        });
+
+        // Auto-focus username field
+        setTimeout(() => {
+            document.getElementById('username').focus();
+        }, 1000);
+
+        // Add security logging (simulated)
+        console.log(`[SECURITY] Access denied for IP: ${navigator.userAgent}`);
+        console.log(`[SECURITY] Page: ${window.location.href}`);
+        console.log(`[SECURITY] Time: ${new Date().toISOString()}`);
+
+        // Add visual feedback for buttons
+        document.querySelectorAll('.btn, .login-submit').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Simulate security check
+        function simulateSecurityCheck() {
+            const accessList = document.querySelector('.access-list');
+            const newItem = document.createElement('li');
+            newItem.innerHTML = `
+                <i class="fas fa-shield-alt" style="color: #4f46e5;"></i>
+                <span>Security check completed at: ${new Date().toLocaleTimeString()}</span>
+            `;
+            accessList.appendChild(newItem);
+            
+            // Remove after 5 seconds
+            setTimeout(() => {
+                if (newItem.parentNode) {
+                    newItem.parentNode.removeChild(newItem);
+                }
+            }, 5000);
+        }
+
+        // Run security check every 10 seconds
+        setInterval(simulateSecurityCheck, 10000);
+    </script>
+</body>
+</html>

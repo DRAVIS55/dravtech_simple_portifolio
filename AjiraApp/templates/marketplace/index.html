@@ -1,0 +1,3225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRAVTECH - Innovative IT Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Light Theme Colors - MAINTAINED */
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #3b82f6;
+            --secondary-color: #64748b;
+            --accent-color: #f97316;
+            --light-bg: #ffffff;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+            --text-light: #64748b;
+            --border-color: #e2e8f0;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --gradient-primary: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            --gradient-secondary: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+            --gradient-tech: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+            --header-height: 80px;
+            --section-spacing: 100px;
+            --nav-bg-light: rgba(255, 255, 255, 0.95);
+            --nav-bg-dark: rgba(15, 23, 42, 0.95);
+            --nav-text-light: #1e293b;
+            --nav-text-dark: #f1f5f9;
+        }
+
+        /* Dark Theme Variables - MAINTAINED */
+        .dark-theme {
+            --primary-color: #3b82f6;
+            --primary-dark: #2563eb;
+            --primary-light: #60a5fa;
+            --secondary-color: #94a3b8;
+            --light-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f1f5f9;
+            --text-light: #cbd5e1;
+            --border-color: #334155;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: var(--section-spacing) 0;
+            position: relative;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* ENHANCED Header & Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            background: var(--nav-bg-light);
+            border-bottom: 1px solid transparent;
+        }
+
+        .dark-theme .header {
+            background: var(--nav-bg-dark);
+        }
+
+        .header.scrolled {
+            height: 70px;
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        .dark-theme .header.scrolled {
+            background: rgba(15, 23, 42, 0.98);
+        }
+
+        .header.transparent {
+            background: transparent;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(0px);
+        }
+
+        .header.transparent .nav-link,
+        .header.transparent .dropdown-trigger {
+            color: white;
+        }
+
+        .header.transparent .logo-text {
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-container {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            position: relative;
+            
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            z-index: 1001;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: var(--transition);
+        }
+
+        /* Enhanced Nav Links - FIXED ALIGNMENT */
+        .nav-links {
+            margin-top: 15px;
+             margin-bottom: 15px;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 16px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+            border: 1px solid transparent;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+            background: rgba(37, 99, 235, 0.1);
+            border-color: rgba(37, 99, 235, 0.2);
+        }
+
+        .nav-link.active {
+            color: var(--primary-color);
+            background: rgba(37, 99, 235, 0.1);
+            border-color: rgba(37, 99, 235, 0.3);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        .nav-link.active::after {
+            width: 70%;
+        }
+
+        /* Nav Actions (Buttons) - IMPROVED ALIGNMENT */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-left: 1.5rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            transition: var(--transition);
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .demo-btn, .profile-btn {
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .demo-btn {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .demo-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .profile-btn {
+            background: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .profile-btn:hover {
+            background: rgba(37, 99, 235, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        /* ENHANCED Floating WhatsApp Button - UPDATED */
+        .floating-whatsapp {
+            position: fixed;
+            right: 20px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: center center;
+            pointer-events: all;
+        }
+
+        /* Default position - Center right with margin from navbar */
+        .floating-whatsapp {
+            bottom: 50%;
+            transform: translateY(50%);
+            margin-top: var(--header-height);
+        }
+
+        /* WhatsApp Button Base Styles */
+        .whatsapp-btn {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 3px solid white;
+            font-size: 1.8rem;
+            z-index: 100;
+        }
+
+        /* WhatsApp Button Hover Effects */
+        .whatsapp-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+            background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
+        }
+
+        /* WhatsApp Pulse Animation */
+        .whatsapp-btn::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            background: rgba(37, 211, 102, 0.2);
+            z-index: -1;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.9);
+                opacity: 1;
+            }
+            70% {
+                transform: scale(1.1);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(0.9);
+                opacity: 1;
+            }
+        }
+
+        /* WhatsApp Tooltip */
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 85px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--card-bg);
+            color: var(--text-color);
+            padding: 12px 18px;
+            border-radius: var(--radius);
+            font-size: 0.9rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            pointer-events: none;
+            font-weight: 500;
+        }
+
+        .whatsapp-btn:hover .whatsapp-tooltip {
+            opacity: 1;
+            visibility: visible;
+            right: 90px;
+        }
+
+        /* Additional Contact Button (Phone) */
+        .phone-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        .phone-btn:hover {
+            transform: scale(1.1);
+            opacity: 1;
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Responsive States for Floating WhatsApp */
+        .floating-whatsapp.scrolled {
+            bottom: 30px;
+            transform: translateY(0);
+        }
+
+        .floating-whatsapp.small {
+            right: 15px;
+        }
+
+        .floating-whatsapp.small .whatsapp-btn {
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+        }
+
+        .floating-whatsapp.small .phone-btn {
+            width: 45px;
+            height: 45px;
+            font-size: 1.2rem;
+        }
+
+        .floating-whatsapp.hidden {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(50%) scale(0.8);
+        }
+
+        /* Section-specific animations */
+        .floating-whatsapp.hero-section {
+            bottom: 40%;
+            transform: translateY(50%) scale(1.1);
+        }
+
+        .floating-whatsapp.services-section {
+            bottom: 45%;
+            transform: translateY(50%) scale(1.05);
+        }
+
+        .floating-whatsapp.contact-section {
+            bottom: 60%;
+            transform: translateY(50%) scale(0.95);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+            padding: 10px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            min-width: 44px;
+            min-height: 44px;
+            align-items: center;
+            justify-content: center;
+            margin-left: 1rem;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Hero Section with Parallax - MAINTAINED */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            filter: brightness(0.7);
+            transform: translateZ(0);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding-top: var(--header-height);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+            background: #f8fafc;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
+        }
+
+        .btn-accent {
+            background: var(--gradient-secondary);
+            color: white;
+            border: none;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-accent:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Enhanced Responsive Nav Styles */
+        @media (max-width: 1200px) {
+            .nav-list {
+                gap: 0.4rem;
+            }
+            
+            .nav-link {
+                padding: 10px 14px;
+                font-size: 0.95rem;
+            }
+            
+            .demo-btn, .profile-btn {
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 1100px) {
+            .nav-list {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding-bottom: 5px;
+            }
+            
+            .nav-list::-webkit-scrollbar {
+                height: 4px;
+            }
+            
+            .nav-list::-webkit-scrollbar-track {
+                background: rgba(0, 0, 0, 0.05);
+                border-radius: 10px;
+            }
+            
+            .nav-list::-webkit-scrollbar-thumb {
+                background: rgba(0, 0, 0, 0.1);
+                border-radius: 10px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .nav-links {
+                position: fixed;
+                top: var(--header-height);
+                left: 0;
+                right: 0;
+                background: var(--card-bg);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow);
+                border-top: 1px solid var(--border-color);
+                max-height: calc(100vh - var(--header-height));
+                overflow-y: auto;
+                display: none;
+                gap: 0.5rem;
+                margin-left: 0;
+                z-index: 1000;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.5rem;
+                overflow-x: visible;
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .nav-link {
+                width: 100%;
+                padding: 15px 20px;
+                border-radius: 8px;
+                justify-content: space-between;
+                font-size: 1rem;
+            }
+
+            .nav-actions {
+                flex-direction: column;
+                width: 100%;
+                margin-left: 0;
+                gap: 0.5rem;
+                padding: 1rem 0 0;
+                border-top: 1px solid var(--border-color);
+            }
+
+            .demo-btn, .profile-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 15px;
+                font-size: 1rem;
+            }
+
+            .theme-toggle {
+                align-self: flex-start;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .about-content {
+                gap: 2rem;
+            }
+
+            /* Enhanced floating WhatsApp for mobile */
+            .floating-whatsapp {
+                right: 15px;
+            }
+
+            .floating-whatsapp .whatsapp-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 1.6rem;
+            }
+
+            .floating-whatsapp .phone-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+
+            .whatsapp-tooltip {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-image {
+                max-width: 100%;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .logo-img {
+                height: 40px;
+            }
+
+            .nav-link {
+                font-size: 1rem;
+                padding: 12px 20px;
+            }
+
+            /* Mobile floating WhatsApp */
+            .floating-whatsapp {
+                right: 10px;
+                bottom: 20px !important;
+                transform: none !important;
+            }
+
+            .floating-whatsapp .whatsapp-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 1.4rem;
+            }
+
+            .floating-whatsapp .phone-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .service-card,
+            .contact-form,
+            .contact-card,
+            .team-card,
+            .project-card {
+                padding: 1.5rem;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+
+            .header {
+                height: 70px;
+            }
+
+            .header.scrolled {
+                height: 60px;
+            }
+
+            .logo-text {
+                font-size: 1.3rem;
+            }
+
+            .nav-link {
+                padding: 10px 15px;
+                font-size: 0.95rem;
+            }
+
+            /* Very small screens */
+            .floating-whatsapp .whatsapp-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            .floating-whatsapp .phone-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Rest of your existing styles remain exactly the same */
+        /* Apps Section - NEW SECTION */
+        .apps-section {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark-theme .apps-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .apps-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary-light);
+        }
+
+        .app-image-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .app-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .app-card:hover .app-image {
+            transform: scale(1.05);
+        }
+
+        .app-content {
+            padding: 1.5rem;
+        }
+
+        .app-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: white;
+        }
+
+        .app-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .app-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .app-date {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+        }
+
+        /* Services Section with Different Background - MAINTAINED */
+        .services {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            position: relative;
+        }
+
+        .dark-theme .services {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .section-subtitle {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .service-description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Products Section with Different Background - MAINTAINED */
+        .products {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark-theme .products {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        .products::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle at center, var(--primary-color) 0%, transparent 70%);
+            opacity: 0.05;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-image-container {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-category {
+            color: var(--primary-color);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+        }
+
+        .product-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .current-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .original-price {
+            font-size: 1rem;
+            color: var(--text-light);
+            text-decoration: line-through;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .product-actions .btn {
+            flex: 1;
+            padding: 12px 20px;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        /* About Section with Flex Layout - MAINTAINED */
+        .about {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            position: relative;
+        }
+
+        .dark-theme .about {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            position: relative;
+        }
+
+        .dark-theme .projects {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .project-description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        /* Team Section */
+        .team {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+
+        .dark-theme .team {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .team-role {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-bio {
+            color: var(--text-light);
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section with Improved Cards - MAINTAINED */
+        .contact {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            position: relative;
+        }
+
+        .dark-theme .contact {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: url('https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2068&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .contact-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .contact-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+        }
+
+        .contact-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            grid-column: 1 / -1;
+        }
+
+        .social-link {
+            width: 48px;
+            height: 48px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            background: var(--light-bg);
+            color: var(--text-color);
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer - MAINTAINED */
+        .footer {
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-light);
+        }
+
+        /* Modal Styles - MAINTAINED */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-hover);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--text-color);
+        }
+
+        /* Loading States - MAINTAINED */
+        .loading-spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--border-color);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+        }
+
+        .loading-overlay.show {
+            display: flex;
+        }
+
+        /* Notification - MAINTAINED */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius);
+            background: var(--card-bg);
+            color: var(--text-color);
+            box-shadow: var(--shadow-hover);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+            z-index: 1001;
+            max-width: 400px;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            border-left: 4px solid var(--success-color);
+        }
+
+        .notification.error {
+            border-left: 4px solid #ef4444;
+        }
+
+        /* Back to Top Button - MAINTAINED */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            border: none;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .back-to-top.show {
+            display: flex;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Categories Filter - MAINTAINED */
+        .categories-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 10px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            color: var(--text-color);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .category-btn:hover {
+            background: var(--primary-light);
+            color: white;
+            border-color: var(--primary-light);
+        }
+
+        .category-btn.active {
+            background: var(--gradient-primary);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* Cart Styles - MAINTAINED */
+        .cart-btn {
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent-color);
+            color: white;
+            font-size: 0.75rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* No Apps Message */
+        .no-apps {
+            text-align: center;
+            padding: 4rem;
+            grid-column: 1 / -1;
+        }
+
+        .no-apps i {
+            font-size: 3rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .no-apps h3 {
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .no-apps p {
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- Notification System -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle" style="color: var(--success-color);"></i>
+        <span id="notificationMessage">Message sent successfully!</span>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- ENHANCED Floating WhatsApp Button -->
+    <div class="floating-whatsapp" id="floatingWhatsApp">
+        <a href="https://wa.me/254758067458" class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <span class="whatsapp-tooltip">Chat with us on WhatsApp</span>
+        </a>
+        <a href="tel:+254758067458" class="phone-btn" title="Call us">
+            <i class="fas fa-phone"></i>
+        </a>
+    </div>
+
+    <!-- Enhanced Header -->
+    <header class="header transparent" id="header">
+        <div class="container nav-container">
+            <a href="#home" class="logo">
+                <img src="/static/dravtech.jpeg" alt="DRAVTECH Logo" class="logo-img">
+                <span class="logo-text">DRAVTECH</span>
+            </a>
+            
+            <nav class="nav-links" id="navLinks">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#services" class="nav-link">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#products" class="nav-link">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#apps" class="nav-link">Our Apps</a>
+                    </li>
+                    <!-- About items as independent links instead of dropdown -->
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#team" class="nav-link">Our Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#projects" class="nav-link">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <a href="{% url 'portifolio' %}" class="profile-btn">
+                        <i class="fas fa-user-circle"></i> Our Profile
+                    </a>
+                    <button class="demo-btn" onclick="openModal('demoModal')">
+                        <i class="fas fa-calendar-check"></i> Request Demo
+                    </button>
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </nav>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-background"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Welcome to <span style="background: linear-gradient(135deg, #fbbf24 0%, #f97316 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">DRAVTECH</span></h1>
+                    <p>Innovative IT Solutions | Cybersecurity | Web & Software Development</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-handshake"></i> Get in Touch
+                        </a>
+                        <a href="#products" class="btn btn-secondary">
+                            <i class="fas fa-store"></i> Browse Products
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Our Services</h2>
+                    <p class="section-subtitle">Comprehensive IT solutions to empower your business</p>
+                </div>
+                
+                <div class="services-grid" id="servicesGrid">
+                    <!-- Services loaded via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="products">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Products</h2>
+                    <p class="section-subtitle">Explore our premium products and solutions</p>
+                </div>
+                
+                <!-- Categories Filter -->
+                <div class="categories-filter" id="categoriesFilter">
+                    <button class="category-btn active" data-category="all">All Products</button>
+                    <!-- Categories loaded via JavaScript -->
+                </div>
+                
+                <!-- Products Grid -->
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products loaded via JavaScript -->
+                </div>
+                
+                <!-- Load More Button -->
+                <div class="text-center mt-4" id="loadMoreContainer">
+                    <button class="btn btn-secondary" onclick="loadMoreProducts()" id="loadMoreBtn">
+                        <i class="fas fa-eye"></i> View More Products
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Apps Section - NEW SECTION -->
+        <section id="apps" class="apps-section" style="display: none;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Our Applications</h2>
+                    <p class="section-subtitle">Explore our collection of innovative applications</p>
+                </div>
+                
+                <div class="apps-grid" id="appsGrid">
+                    <!-- Apps loaded via JavaScript from /api/apps/ -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">About Us</h2>
+                    <p class="section-subtitle">Learn more about DRAVTECH and our mission</p>
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>About DRAVTECH</h2>
+                        <p>DRAVTECH is a leading IT solutions provider dedicated to delivering innovative technology services. We specialize in IT support, web design & development, cybersecurity, and software engineering. Our mission is to empower businesses with technology that drives growth and efficiency.</p>
+                        <p>With a team of experienced professionals, we provide end-to-end solutions that combine technical expertise with creative innovation. We believe in building lasting partnerships with our clients through exceptional service and measurable results.</p>
+                        
+                        <div class="features-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem;">
+                            <div class="feature-item" style="display: flex; align-items: flex-start; gap: 1rem;">
+                                <div class="service-icon" style="width: 48px; height: 48px; font-size: 1.2rem;">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">Fast Delivery</h4>
+                                    <p style="color: var(--text-light); font-size: 0.95rem;">Quick turnaround times without compromising quality</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item" style="display: flex; align-items: flex-start; gap: 1rem;">
+                                <div class="service-icon" style="width: 48px; height: 48px; font-size: 1.2rem;">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">Secure Solutions</h4>
+                                    <p style="color: var(--text-light); font-size: 0.95rem;">Enterprise-grade security for all our products</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item" style="display: flex; align-items: flex-start; gap: 1rem;">
+                                <div class="service-icon" style="width: 48px; height: 48px; font-size: 1.2rem;">
+                                    <i class="fas fa-headset"></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">24/7 Support</h4>
+                                    <p style="color: var(--text-light); font-size: 0.95rem;">Round-the-clock technical support</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item" style="display: flex; align-items: flex-start; gap: 1rem;">
+                                <div class="service-icon" style="width: 48px; height: 48px; font-size: 1.2rem;">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">Scalable Solutions</h4>
+                                    <p style="color: var(--text-light); font-size: 0.95rem;">Systems that grow with your business</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="DRAVTECH Team">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Our Projects</h2>
+                    <p class="section-subtitle">Showcasing our innovative solutions and implementations</p>
+                </div>
+                
+                <div class="projects-grid" id="projectsGrid">
+                    <!-- Projects loaded via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="team">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Our Team</h2>
+                    <p class="section-subtitle">Meet the experts behind DRAVTECH's success</p>
+                </div>
+                
+                <div class="team-grid" id="teamGrid">
+                    <!-- Team loaded via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Contact Us</h2>
+                    <p class="section-subtitle">Get in touch with our team for inquiries and collaborations</p>
+                </div>
+                
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3>Email Us</h3>
+                            <p>dravislotum@gmail.com</p>
+                            <p>samuelkibunja55@gmail.com</p>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h3>Call Us</h3>
+                            <p>+254 758 067 458</p>
+                            <p>+254 720 357 085</p>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h3>Visit Us</h3>
+                            <p>Nairobi, Kenya</p>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h3>Working Hours</h3>
+                            <p>Mon - Fri: 8:00 AM - 6:00 PM</p>
+                            <p>Sat: 9:00 AM - 2:00 PM</p>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="https://github.com/dravtech" class="social-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://linkedin.com/company/dravtech" class="social-link" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://twitter.com/drav_tech" class="social-link" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://facebook.com/dravtech" class="social-link" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <form id="contactForm" onsubmit="submitContactForm(event)">
+                            <div class="form-group">
+                                <label class="form-label">Name</label>
+                                <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-control" name="message" rows="4" placeholder="Your Message" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DRAVTECH</h3>
+                    <p>Leading IT solutions provider specializing in innovative technology services, cybersecurity, and software development.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#apps">Our Apps</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">IT Support</a></li>
+                        <li><a href="#services">Web Development</a></li>
+                        <li><a href="#services">Cybersecurity</a></li>
+                        <li><a href="#services">Software Engineering</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> dravislotum@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +254 758 067 458</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 DRAVTECH. All rights reserved. | 🚀 Powered by DRAVTECH | Portfolio & GitHub</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Demo Modal -->
+    <div class="modal" id="demoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Request a Demo</h3>
+                <button class="modal-close" onclick="closeModal('demoModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form id="demoForm" onsubmit="submitDemoRequest(event)">
+                <div class="form-group">
+                    <label class="form-label">Full Name *</label>
+                    <input type="text" class="form-control" name="full_name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Email Address *</label>
+                    <input type="email" class="form-control" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Phone Number *</label>
+                    <input type="tel" class="form-control" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Company</label>
+                    <input type="text" class="form-control" name="company">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Service of Interest *</label>
+                    <select class="form-control" name="interest_area" required>
+                        <option value="">Select a service</option>
+                        <option value="system_design">System Design</option>
+                        <option value="web_development">Web Development</option>
+                        <option value="cybersecurity">Cybersecurity</option>
+                        <option value="software_engineering">Software Engineering</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Preferred Date & Time</label>
+                    <input type="datetime-local" class="form-control" name="preferred_time">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Additional Notes</label>
+                    <textarea class="form-control" name="message" rows="3"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <i class="fas fa-calendar-check"></i> Request Demo
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Order Modal -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Place Order</h3>
+                <button class="modal-close" onclick="closeModal('orderModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form id="orderForm" onsubmit="submitOrder(event)">
+                <div class="form-group">
+                    <label class="form-label">Full Name *</label>
+                    <input type="text" class="form-control" name="customer_name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Email Address *</label>
+                    <input type="email" class="form-control" name="customer_email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Phone Number *</label>
+                    <input type="tel" class="form-control" name="customer_phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Shipping Address *</label>
+                    <textarea class="form-control" name="customer_address" rows="3" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Payment Method</label>
+                    <select class="form-control" name="payment_method">
+                        <option value="mpesa">M-Pesa</option>
+                        <option value="cash_on_delivery">Cash on Delivery</option>
+                        <option value="bank_transfer">Bank Transfer</option>
+                        <option value="credit_card">Credit Card</option>
+                    </select>
+                </div>
+                
+                <div id="orderItems">
+                    <!-- Order items will be added dynamically -->
+                </div>
+                
+                <div class="form-group" style="border-top: 2px solid var(--border-color); padding-top: 1rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span>Subtotal:</span>
+                        <span id="orderSubtotal">KES 0</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span>Tax (16%):</span>
+                        <span id="orderTax">KES 0</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 1.2rem;">
+                        <span>Total:</span>
+                        <span id="orderTotal">KES 0</span>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-accent" style="width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-shopping-cart"></i> Place Order
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Enhanced Navbar Functions
+        function toggleMobileMenu() {
+            const navLinksContainer = document.getElementById('navLinks');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            
+            navLinksContainer.classList.toggle('show');
+            mobileMenuBtn.innerHTML = navLinksContainer.classList.contains('show') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            
+            // Close mobile menu when clicking a link
+            if (navLinksContainer.classList.contains('show')) {
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinksContainer.classList.remove('show');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }, { once: true });
+                });
+            }
+        }
+
+        // State Management - MAINTAINED
+        let currentPage = 1;
+        let currentCategory = 'all';
+        let isLoading = false;
+        let hasMoreProducts = true;
+        let productsPerPage = 12;
+        let cart = [];
+        let currentProductForOrder = null;
+        let appsLoaded = false;
+
+        // Theme Management - MAINTAINED
+        const themeToggle = document.getElementById('themeToggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        const currentTheme = localStorage.getItem('theme') || 
+                           (prefersDarkScheme.matches ? 'dark' : 'light');
+        
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark-theme');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            
+            if (document.body.classList.contains('dark-theme')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+
+        // Navigation Management - Enhanced
+        const header = document.getElementById('header');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinksContainer = document.getElementById('navLinks');
+        const backToTopBtn = document.getElementById('backToTop');
+        const floatingWhatsApp = document.getElementById('floatingWhatsApp');
+
+        // Enhanced Floating WhatsApp Scroll Handler
+        let lastScrollTop = 0;
+        let scrollDirection = 'down';
+        let isScrolling = false;
+        let scrollTimeout;
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const heroHeight = document.getElementById('home').offsetHeight;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            
+            // Determine scroll direction
+            scrollDirection = scrollTop > lastScrollTop ? 'down' : 'up';
+            lastScrollTop = scrollTop;
+            
+            // Clear any existing timeout
+            clearTimeout(scrollTimeout);
+            isScrolling = true;
+            
+            // Header background transition
+            if (scrollTop > 50) {
+                header.classList.add('scrolled');
+                header.classList.remove('transparent');
+            } else {
+                header.classList.remove('scrolled');
+                header.classList.add('transparent');
+            }
+            
+            // Parallax effect
+            const heroBackground = document.querySelector('.hero-background');
+            if (heroBackground) {
+                heroBackground.style.transform = `translateY(${scrollTop * 0.5}px)`;
+            }
+            
+            // Show/hide back to top button
+            if (scrollTop > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+            
+            // ENHANCED: Floating WhatsApp Button Behavior
+            updateFloatingWhatsApp(scrollTop, scrollDirection);
+            
+            // Update active nav link based on scroll position
+            updateActiveNavLink();
+            
+            // Set timeout to indicate scrolling has stopped
+            scrollTimeout = setTimeout(() => {
+                isScrolling = false;
+                // Final adjustment after scrolling stops
+                if (scrollTop > 100) {
+                    floatingWhatsApp.classList.add('scrolled');
+                }
+            }, 150);
+        });
+
+        // Update Floating WhatsApp Button
+        function updateFloatingWhatsApp(scrollTop, scrollDirection) {
+            const heroSection = document.getElementById('home');
+            const servicesSection = document.getElementById('services');
+            const contactSection = document.getElementById('contact');
+            const windowHeight = window.innerHeight;
+            
+            // Get section positions
+            const heroRect = heroSection.getBoundingClientRect();
+            const servicesRect = servicesSection.getBoundingClientRect();
+            const contactRect = contactSection.getBoundingClientRect();
+            
+            // Reset classes
+            floatingWhatsApp.classList.remove('hidden', 'small', 'hero-section', 'services-section', 'contact-section');
+            
+            // Hide on very top
+            if (scrollTop < 50) {
+                floatingWhatsApp.classList.add('hidden');
+                return;
+            }
+            
+            // Section-specific animations
+            if (scrollTop < heroSection.offsetHeight) {
+                // In hero section
+                floatingWhatsApp.classList.add('hero-section');
+                floatingWhatsApp.style.bottom = '40%';
+            } else if (scrollTop < heroSection.offsetHeight + servicesSection.offsetHeight) {
+                // In services section
+                floatingWhatsApp.classList.add('services-section');
+                floatingWhatsApp.style.bottom = '45%';
+            } else if (contactRect.top < windowHeight && contactRect.bottom > 0) {
+                // In contact section
+                floatingWhatsApp.classList.add('contact-section');
+                floatingWhatsApp.style.bottom = '60%';
+            } else {
+                // Default position
+                floatingWhatsApp.style.bottom = '50%';
+            }
+            
+            // Adjust based on scroll direction
+            if (scrollDirection === 'down' && scrollTop > 100) {
+                floatingWhatsApp.classList.add('small');
+                floatingWhatsApp.style.bottom = '30px';
+            } else {
+                floatingWhatsApp.classList.remove('small');
+            }
+            
+            // Always show when scrolled
+            if (scrollTop > 100) {
+                floatingWhatsApp.classList.add('scrolled');
+            } else {
+                floatingWhatsApp.classList.remove('scrolled');
+            }
+        }
+
+        // Mobile menu toggle - Enhanced
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        // Update active nav link
+        function updateActiveNavLink() {
+            const sections = document.querySelectorAll('section');
+            const scrollPosition = window.scrollY + 100;
+            
+            let currentActive = null;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    currentActive = sectionId;
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const href = link.getAttribute('href').substring(1);
+                if (href === currentActive) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Close mobile menu when clicking outside on mobile
+        document.addEventListener('click', (event) => {
+            if (window.innerWidth <= 1024) {
+                const navLinks = document.getElementById('navLinks');
+                const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+                
+                if (navLinks.classList.contains('show') && 
+                    !event.target.closest('#navLinks') && 
+                    !event.target.closest('#mobileMenuBtn')) {
+                    navLinks.classList.remove('show');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            }
+        });
+
+        // Modal Management - MAINTAINED
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (event) => {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Notification System - MAINTAINED
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            const messageElement = document.getElementById('notificationMessage');
+            const icon = notification.querySelector('i');
+            
+            messageElement.textContent = message;
+            notification.className = `notification ${type} show`;
+            
+            // Update icon based on type
+            if (type === 'success') {
+                icon.className = 'fas fa-check-circle';
+                icon.style.color = 'var(--success-color)';
+            } else if (type === 'error') {
+                icon.className = 'fas fa-exclamation-circle';
+                icon.style.color = '#ef4444';
+            }
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 5000);
+        }
+
+        // Loading Overlay - MAINTAINED
+        function showLoading() {
+            document.getElementById('loadingOverlay').classList.add('show');
+            isLoading = true;
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingOverlay').classList.remove('show');
+            isLoading = false;
+        }
+
+        // Load Services - MAINTAINED
+        async function loadServices() {
+            try {
+                const services = [
+                    {
+                        icon: 'fas fa-laptop-house',
+                        title: 'IT Support',
+                        description: 'Reliable IT support services to keep your systems running smoothly and efficiently.',
+                        features: ['System Maintenance', 'Technical Support', 'Network Management']
+                    },
+                    {
+                        icon: 'fas fa-code',
+                        title: 'Web Development',
+                        description: 'Beautiful, responsive, and scalable websites that align with your business goals.',
+                        features: ['Responsive Design', 'E-commerce', 'Web Applications']
+                    },
+                    {
+                        icon: 'fas fa-shield-alt',
+                        title: 'Cybersecurity',
+                        description: 'Comprehensive security solutions to protect your digital assets from evolving threats.',
+                        features: ['Security Audits', 'Threat Protection', 'Data Encryption']
+                    },
+                    {
+                        icon: 'fas fa-cogs',
+                        title: 'Software Engineering',
+                        description: 'Custom software solutions that streamline operations and improve efficiency.',
+                        features: ['Custom Development', 'System Integration', 'API Development']
+                    }
+                ];
+                
+                renderServices(services);
+            } catch (error) {
+                console.error('Error loading services:', error);
+                showNotification('Failed to load services', 'error');
+            }
+        }
+
+        function renderServices(services) {
+            const servicesGrid = document.getElementById('servicesGrid');
+            servicesGrid.innerHTML = services.map(service => `
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="${service.icon}"></i>
+                    </div>
+                    <h3 class="service-title">${service.title}</h3>
+                    <p class="service-description">${service.description}</p>
+                    <ul style="color: var(--text-light); font-size: 0.9rem; margin-top: 1rem; list-style: none; padding: 0;">
+                        ${service.features.map(feature => `
+                            <li style="margin-bottom: 0.5rem;">
+                                <i class="fas fa-check" style="color: var(--success-color); margin-right: 8px;"></i> ${feature}
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+            `).join('');
+        }
+
+        // Load Categories from Backend - MAINTAINED
+        async function loadCategories() {
+            try {
+                const response = await fetch('/api/categories/');
+                const data = await response.json();
+                
+                if (data.categories && data.categories.length > 0) {
+                    renderCategories(data.categories);
+                } else {
+                    renderDefaultCategories();
+                }
+            } catch (error) {
+                console.error('Error loading categories:', error);
+                renderDefaultCategories();
+            }
+        }
+
+        function renderDefaultCategories() {
+            const defaultCategories = [
+                { id: 1, name: 'IT Solutions', category_type: 'it_solutions', type_display: 'IT Solutions' },
+                { id: 2, name: 'Software', category_type: 'software', type_display: 'Software' },
+                { id: 3, name: 'Consulting', category_type: 'consulting', type_display: 'Consulting' },
+                { id: 4, name: 'Training', category_type: 'training', type_display: 'Training' }
+            ];
+            renderCategories(defaultCategories);
+        }
+
+        function renderCategories(categories) {
+            const categoriesFilter = document.getElementById('categoriesFilter');
+            
+            const uniqueTypes = [...new Set(categories.map(cat => cat.category_type))];
+            
+            uniqueTypes.forEach(type => {
+                const category = categories.find(cat => cat.category_type === type);
+                const btn = document.createElement('button');
+                btn.className = 'category-btn';
+                btn.dataset.category = type;
+                btn.textContent = category.type_display || type.replace('_', ' ');
+                btn.onclick = () => filterProductsByCategory(type);
+                categoriesFilter.appendChild(btn);
+            });
+        }
+
+        // Load Products from Backend with Pagination
+        async function loadProducts(reset = false) {
+            if (isLoading) return;
+            
+            if (reset) {
+                currentPage = 1;
+                hasMoreProducts = true;
+                const productsGrid = document.getElementById('productsGrid');
+                productsGrid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 2rem;">
+                        <div class="loading-spinner"></div>
+                    </div>
+                `;
+            }
+            
+            showLoading();
+            
+            try {
+                const params = new URLSearchParams({
+                    page: currentPage,
+                    per_page: productsPerPage
+                });
+                
+                if (currentCategory !== 'all') {
+                    params.append('category_type', currentCategory);
+                }
+                
+                const response = await fetch(`/api/products/?${params}`);
+                const data = await response.json();
+                
+                if (reset) {
+                    document.getElementById('productsGrid').innerHTML = '';
+                }
+                
+                if (data.products && data.products.length > 0) {
+                    // Add new products not currently on the page
+                    const newProducts = [
+                        {
+                            id: 1001,
+                            name: "AI-Powered Analytics Dashboard",
+                            description: "Real-time analytics dashboard with AI insights for business intelligence",
+                            short_description: "Advanced analytics with AI-powered insights",
+                            image_url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                            category: "AI & Analytics",
+                            current_price: "45000",
+                            price: "50000",
+                            has_discount: true
+                        },
+                        {
+                            id: 1002,
+                            name: "Cloud Security Suite",
+                            description: "Comprehensive cloud security solution for enterprise protection",
+                            short_description: "Enterprise-grade cloud security",
+                            image_url: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                            category: "Cybersecurity",
+                            current_price: "75000",
+                            price: "75000",
+                            has_discount: false
+                        },
+                        {
+                            id: 1003,
+                            name: "E-commerce Platform",
+                            description: "Scalable e-commerce platform with payment integration and inventory management",
+                            short_description: "Complete e-commerce solution",
+                            image_url: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                            category: "Web Development",
+                            current_price: "60000",
+                            price: "65000",
+                            has_discount: true
+                        }
+                    ];
+                    
+                    // Combine existing products with new ones
+                    const allProducts = [...data.products, ...newProducts];
+                    
+                    renderProducts(allProducts);
+                    hasMoreProducts = data.has_next;
+                    
+                    if (!hasMoreProducts) {
+                        document.getElementById('loadMoreBtn').style.display = 'none';
+                    } else {
+                        document.getElementById('loadMoreBtn').style.display = 'block';
+                    }
+                } else {
+                    renderNoProducts();
+                    hasMoreProducts = false;
+                    document.getElementById('loadMoreBtn').style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Error loading products:', error);
+                showNotification('Failed to load products', 'error');
+                renderNoProducts();
+            } finally {
+                hideLoading();
+            }
+        }
+
+        function renderProducts(products) {
+            const productsGrid = document.getElementById('productsGrid');
+            
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-image-container">
+                        <img src="${product.image_url || 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'}" 
+                             alt="${product.name}" 
+                             class="product-image"
+                             onerror="this.src='https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">${product.category || 'IT Solution'}</div>
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-description">${product.short_description || product.description || 'Innovative IT solution for modern businesses.'}</p>
+                        <div class="product-price">
+                            <span class="current-price">KES ${parseFloat(product.current_price || product.price).toLocaleString()}</span>
+                            ${product.has_discount ? `<span class="original-price">KES ${parseFloat(product.price).toLocaleString()}</span>` : ''}
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary" onclick="openOrderModal(${JSON.stringify(product).replace(/"/g, '&quot;')})">
+                                <i class="fas fa-shopping-cart"></i> Order Now
+                            </button>
+                            <button class="btn btn-secondary" onclick="openModal('demoModal'); setDemoProduct(${product.id})">
+                                <i class="fas fa-calendar-alt"></i> Request Demo
+                            </button>
+                        </div>
+                    </div>
+                `;
+                productsGrid.appendChild(productCard);
+            });
+        }
+
+        function renderNoProducts() {
+            const productsGrid = document.getElementById('productsGrid');
+            productsGrid.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; padding: 4rem;">
+                    <i class="fas fa-box-open" style="font-size: 3rem; color: var(--text-light); margin-bottom: 1rem;"></i>
+                    <h3 style="color: var(--text-color); margin-bottom: 0.5rem;">No Products Found</h3>
+                    <p style="color: var(--text-light);">No products are available in this category at the moment.</p>
+                </div>
+            `;
+        }
+
+        function filterProductsByCategory(category) {
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.category === category) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            currentCategory = category;
+            loadProducts(true);
+            
+            const productsSection = document.getElementById('products');
+            const rect = productsSection.getBoundingClientRect();
+            if (rect.top < 0 || rect.bottom > window.innerHeight) {
+                productsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function loadMoreProducts() {
+            if (hasMoreProducts && !isLoading) {
+                currentPage++;
+                loadProducts(false);
+            }
+        }
+
+        // Load Apps from Backend
+        async function loadApps() {
+            if (appsLoaded || isLoading) return;
+            
+            try {
+                showLoading();
+                const response = await fetch('/api/apps/');
+                const data = await response.json();
+                
+                if (data.success && data.apps && data.apps.length > 0) {
+                    renderApps(data.apps);
+                    document.getElementById('apps').style.display = 'block';
+                    appsLoaded = true;
+                } else {
+                    // Hide apps section if no apps
+                    document.getElementById('apps').style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Error loading apps:', error);
+                document.getElementById('apps').style.display = 'none';
+            } finally {
+                hideLoading();
+            }
+        }
+
+        function renderApps(apps) {
+            const appsGrid = document.getElementById('appsGrid');
+            
+            appsGrid.innerHTML = apps.map(app => `
+                <div class="app-card">
+                    <div class="app-image-container">
+                        <img src="${app.image || 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'}" 
+                             alt="${app.name}" 
+                             class="app-image"
+                             onerror="this.src='https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                    </div>
+                    <div class="app-content">
+                        <h3 class="app-title">${app.name}</h3>
+                        <p class="app-description">${app.description}</p>
+                        <div class="app-meta">
+                            <a href="${app.url}" class="btn btn-primary" target="_blank" style="padding: 8px 16px;">
+                                <i class="fas fa-external-link-alt"></i> Visit App
+                            </a>
+                            <span class="app-date">${new Date(app.created_at).toLocaleDateString()}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Load Projects - MAINTAINED
+        async function loadProjects() {
+            try {
+                const projects = [
+                    {
+                        title: "News Hub",
+                        description: "Python-based project for news scraping, AI processing, and dashboard analytics.",
+                        link: "https://github.com/dravtech/newshub"
+                    },
+                    {
+                        title: "Django-React SACCO System",
+                        description: "Full-stack SACCO management system using Django backend and React frontend.",
+                        link: "https://github.com/dravtech/sacco-system"
+                    },
+                    {
+                        title: "Job Portal",
+                        description: "Python-based job portal for posting, searching, and applying for jobs.",
+                        link: "https://github.com/dravtech/jobportal"
+                    },
+                    {
+                        title: "Java Currency Converter",
+                        description: "Java application for converting multiple currencies with a simple GUI.",
+                        link: "https://github.com/dravtech/currency-converter"
+                    },
+                    {
+                        title: "University Timetable Portal Analyser",
+                        description: "AI-powered portal that analyzes PDF timetables and displays them in an organized, sorted manner.",
+                        link: "https://github.com/dravtech/timetable-analyzer"
+                    },
+                    {
+                        title: "Personal Portfolio",
+                        description: "Professional portfolio showcasing projects and skills.",
+                        link: "https://github.com/dravtech/portfolio"
+                    }
+                ];
+                
+                renderProjects(projects);
+            } catch (error) {
+                console.error('Error loading projects:', error);
+            }
+        }
+
+        function renderProjects(projects) {
+            const projectsGrid = document.getElementById('projectsGrid');
+            projectsGrid.innerHTML = projects.map(project => `
+                <div class="project-card">
+                    <h3 class="project-title">${project.title}</h3>
+                    <p class="project-description">${project.description}</p>
+                    <a href="${project.link}" class="btn btn-primary" target="_blank">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            `).join('');
+        }
+
+        // Load Team - MAINTAINED
+        async function loadTeam() {
+            try {
+                const team = [
+                    {
+                        name: "Samuel Kibunja",
+                        role: "Chief Technology Officer (CTO)",
+                        title: "Computer Scientist | Technologist",
+                        bio: "Product development, engineering leadership, and technical innovation. Design and oversee software architecture, decide on tech stack, infrastructure, and scalability.",
+                        contact: {
+                            email: ["dravislotum@gmail.com", "samuelkibunja55@gmail.com"],
+                            phone: "0758067458"
+                        }
+                    },
+                    {
+                        name: "Frendlick Mbugua",
+                        role: "Chief Executive Officer (CEO)",
+                        title: "Economist | Business Strategist",
+                        bio: "Business strategy, operations, fundraising, growth, and data-driven decision-making. Define company's mission, goals, and market positioning.",
+                        contact: {
+                            email: ["fredlickmbugua8@gmail.com"],
+                            phone: "0720357085"
+                        }
+                    }
+                ];
+                
+                renderTeam(team);
+            } catch (error) {
+                console.error('Error loading team:', error);
+            }
+        }
+
+        function renderTeam(team) {
+            const teamGrid = document.getElementById('teamGrid');
+            teamGrid.innerHTML = team.map(member => `
+                <div class="team-card">
+                    <h3>${member.name}</h3>
+                    <p class="team-role">${member.role}</p>
+                    <p>${member.title}</p>
+                    <p class="team-bio">${member.bio}</p>
+                    <div style="margin-top: 1rem;">
+                        ${member.contact.email.map(email => `
+                            <p><i class="fas fa-envelope"></i> ${email}</p>
+                        `).join('')}
+                        <p><i class="fas fa-phone"></i> ${member.contact.phone}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Order Modal Functions - MAINTAINED
+        function openOrderModal(product) {
+            currentProductForOrder = product;
+            cart = [{ product_id: product.id, quantity: 1, price: product.current_price || product.price, name: product.name }];
+            updateOrderModal();
+            openModal('orderModal');
+        }
+
+        function updateOrderModal() {
+            const orderItems = document.getElementById('orderItems');
+            const subtotal = cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
+            const tax = subtotal * 0.16;
+            const total = subtotal + tax;
+            
+            orderItems.innerHTML = `
+                <div style="background: var(--light-bg); padding: 1rem; border-radius: var(--radius); margin-bottom: 1rem;">
+                    <h4 style="margin-bottom: 1rem;">Order Summary</h4>
+                    ${cart.map(item => `
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid var(--border-color);">
+                            <div>
+                                <strong>${item.name}</strong>
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem;">
+                                    <button onclick="updateQuantity(${item.product_id}, ${item.quantity - 1})" ${item.quantity <= 1 ? 'disabled' : ''} style="background: var(--border-color); border: none; width: 24px; height: 24px; border-radius: 4px; cursor: pointer;">-</button>
+                                    <span>${item.quantity}</span>
+                                    <button onclick="updateQuantity(${item.product_id}, ${item.quantity + 1})" style="background: var(--primary-color); color: white; border: none; width: 24px; height: 24px; border-radius: 4px; cursor: pointer;">+</button>
+                                </div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div>KES ${(parseFloat(item.price) * item.quantity).toLocaleString()}</div>
+                                <small style="color: var(--text-light);">KES ${parseFloat(item.price).toLocaleString()} each</small>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            document.getElementById('orderSubtotal').textContent = `KES ${subtotal.toLocaleString()}`;
+            document.getElementById('orderTax').textContent = `KES ${tax.toLocaleString()}`;
+            document.getElementById('orderTotal').textContent = `KES ${total.toLocaleString()}`;
+        }
+
+        function updateQuantity(productId, newQuantity) {
+            if (newQuantity < 1) return;
+            
+            const itemIndex = cart.findIndex(item => item.product_id === productId);
+            if (itemIndex !== -1) {
+                cart[itemIndex].quantity = newQuantity;
+                updateOrderModal();
+            }
+        }
+
+        // Form Submission Functions - MAINTAINED
+        async function submitOrder(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            
+            const subtotal = cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
+            const tax = subtotal * 0.16;
+            const total = subtotal + tax;
+            
+            const orderData = {
+                ...data,
+                products: cart,
+                subtotal: subtotal.toFixed(2),
+                tax: tax.toFixed(2),
+                total: total.toFixed(2)
+            };
+            
+            showLoading();
+            
+            try {
+                const response = await fetch('/api/order/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCsrfToken()
+                    },
+                    body: JSON.stringify(orderData)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    showNotification(result.message || 'Order placed successfully! Check your email for confirmation.');
+                    form.reset();
+                    closeModal('orderModal');
+                    cart = [];
+                    currentProductForOrder = null;
+                } else {
+                    showNotification(result.error || 'Failed to place order. Please try again.', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showNotification('Network error. Please try again.', 'error');
+            } finally {
+                hideLoading();
+            }
+        }
+
+        async function submitContactForm(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            
+            showLoading();
+            
+            try {
+                const response = await fetch('/api/contact/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCsrfToken()
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    showNotification('Message sent successfully! We will get back to you soon.');
+                    form.reset();
+                } else {
+                    const error = await response.json();
+                    showNotification(error.error || 'Failed to send message. Please try again.', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showNotification('Network error. Please try again.', 'error');
+            } finally {
+                hideLoading();
+            }
+        }
+
+        async function submitDemoRequest(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            
+            showLoading();
+            
+            try {
+                const response = await fetch('/api/demo-request/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCsrfToken()
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    showNotification(result.message || 'Demo request submitted successfully! We will contact you within 24 hours.');
+                    form.reset();
+                    closeModal('demoModal');
+                } else {
+                    showNotification(result.error || 'Failed to submit demo request. Please try again.', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showNotification('Network error. Please try again.', 'error');
+            } finally {
+                hideLoading();
+            }
+        }
+
+        function setDemoProduct(productId) {
+            const demoForm = document.getElementById('demoForm');
+            const productField = demoForm.querySelector('input[name="product_id"]') || document.createElement('input');
+            productField.type = 'hidden';
+            productField.name = 'product_id';
+            productField.value = productId;
+            
+            if (!demoForm.contains(productField)) {
+                demoForm.appendChild(productField);
+            }
+        }
+
+        // Helper Functions - MAINTAINED
+        function getCsrfToken() {
+            const name = 'csrftoken';
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadServices();
+            loadCategories();
+            loadProducts(true);
+            loadProjects();
+            loadTeam();
+            loadApps();
+            updateActiveNavLink();
+            
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                if (btn.dataset.category === 'all') {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Add smooth scrolling for all navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('.header').offsetHeight;
+                        const targetPosition = targetElement.offsetTop - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Initialize floating WhatsApp position
+            updateFloatingWhatsApp(window.scrollY, 'down');
+        });
+
+        // Infinite scroll
+        window.addEventListener('scroll', () => {
+            const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+            
+            if (scrollTop + clientHeight >= scrollHeight - 100 && hasMoreProducts && !isLoading) {
+                loadMoreProducts();
+            }
+            
+            // Load apps when user scrolls near the apps section
+            const appsSection = document.getElementById('apps');
+            if (appsSection) {
+                const rect = appsSection.getBoundingClientRect();
+                if (rect.top < window.innerHeight && !appsLoaded && !isLoading) {
+                    loadApps();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

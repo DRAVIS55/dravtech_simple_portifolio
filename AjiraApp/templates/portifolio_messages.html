@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Messages</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7f8;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+      color: #4A90E2;
+      text-shadow: 1px 1px 2px #ccc;
+    }
+
+    .message-card {
+      background: linear-gradient(135deg, #fdfbfb, #ebedee);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s forwards;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .message-card:nth-child(1) { animation-delay: 0.1s; }
+    .message-card:nth-child(2) { animation-delay: 0.2s; }
+    .message-card:nth-child(3) { animation-delay: 0.3s; }
+    .message-card:nth-child(4) { animation-delay: 0.4s; }
+
+    .message-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 12px 25px rgba(0,0,0,0.2);
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .message-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .message-header span {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .message-email {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .message-body {
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .message-date {
+      font-size: 0.8rem;
+      color: #999;
+      text-align: right;
+      margin-top: 10px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Portfolio Messages</h1>
+
+    {% if messages %}
+      {% for msg in messages %}
+        <div class="message-card">
+          <div class="message-header">
+            <span>{{ msg.name }}</span>
+            <span class="message-email">{{ msg.email }}</span>
+          </div>
+          <div class="message-body">
+            {{ msg.message }}
+          </div>
+          <div class="message-date">
+            Submitted at: {{ msg.submitted_at|date:"F j, Y, g:i a" }}
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p style="text-align:center; color:#555;">No messages found.</p>
+    {% endif %}
+  </div>
+</body>
+</html>

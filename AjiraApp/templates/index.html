@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samuel Kibunja | Portfolio</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'assets/main.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>/* Social Icons Section */
+#socials {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #111;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+#socials h2 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+ color: #08c5ff;;
+}
+
+/* Icon Grid */
+.social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Icons Styling */
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  background: #fff;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  background-color: #08c5ff;
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Icon responsiveness */
+@media (max-width: 768px) {
+  .social-icons {
+    gap: 16px;
+    font-size: 24px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .social-icons a {
+    font-size: 24px;
+  }
+}
+/* Tech Stack Section */
+#tech-stack {
+  background-color: #111;
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 2rem;
+  border-radius: 8px;
+}
+
+#tech-stack h2 {
+  font-size: 1.8rem;
+  color: #08c5ff;
+  margin-bottom: 1rem;
+}
+
+.tech-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 1rem;
+  padding: 0 1rem;
+}
+
+.tech-icons img {
+  width: 48px;
+  height: 48px;
+  max-width: 100%;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: grayscale(100%);
+}
+
+.tech-icons img:hover {
+  transform: scale(1.2);
+  filter: grayscale(0%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #tech-stack h2 {
+    font-size: 1.5rem;
+  }
+
+  .tech-icons {
+    gap: 1rem;
+  }
+
+  .tech-icons img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tech-icons img {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+</style>
+</head>
+<body>
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Toggle Button -->
+  <button id="menuToggle">&#9776;</button>
+
+  <!-- Sidebar Navigation -->
+  <nav id="nav_bar">
+    <div id="title">
+      <p>SAMUEL KIBUNJA</p>
+      <p class="heading typing">Full Stack Web Developer</p>
+    </div>
+    <div id="profile_div">
+      <img src="{% static 'assets/dravis.jpg' %}" id="profile_div_pic" alt="profile">
+    </div>
+    <ul>
+      <li><a href="{% url 'personal_profile' %}">Personal Profile</a></li>
+      <li><a href="{% url 'education' %}">Education Background</a></li>
+      <li><a href="{% url 'skills' %}">Tech Skills</a></li>
+      <li><a href="{% url 'experience' %}">Experiences</a></li>
+      <li><a href="{% url 'projects' %}">Projects</a></li>
+      <li><a href="{% url 'references' %}">References</a></li>
+      <li><a href="{% url 'references' %}">Our WEbsite</a></li>
+      <li><a href="{% url 'contact' %}">Contact Info</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- Main Content -->
+  <main id="content_bar">
+    <header class="hero-header">
+  <div class="spin-badge" aria-hidden="true"></div>
+
+  <h1 id="header">Welcome to Drav-Tech Solutions</h1>
+  <p id="welcome_note">"Solutions with Expertise"</p>
+
+  <div class="spin-badge" aria-hidden="true"></div>
+</header>
+
+
+
+    <!-- About -->
+    <section id="about_panel" class="card  fade-in">
+      <h2>About Me</h2>
+      <p>
+        Drav-tech is a tech-company offering IT solutions. Founded by Samuel Kibunja (Dravis),
+        it is driven by the mission to provide world-class solutions with customer satisfaction at the core.
+      </p>
+      <a href="{% url 'about_us' %}" class="btn">More About Us</a>
+
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="card  fade-in">
+      <h2>Projects</h2>
+      <p>
+        Check out some of my works on
+        <a href="https://github.com/Dravis55" target="_blank" class="links">GitHub</a>.
+      </p>
+      <a href="{% url 'lives' %}" class="btn" >View Live Projects</a>
+    </section>
+
+    <!-- Contact -->
+    <!-- Contact -->
+<section id="contact" class="card fade-in">
+  <h2>Contact Me</h2>
+  <p>Email: <a class="links">samuelkibunja55@gmail.com</a></p>
+  <p>Phone: <a class="links">+254 758 067 458</a></p>
+
+  <form id="contact_form" method="post">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Message" rows="4" required></textarea>
+    <button type="submit" class="btn">Send Message</button>
+  </form>
+
+
+
+</section>
+
+<!-- Social Media Section -->
+<section id="socials" class="card fade-in">
+  <h2>Connect with Me</h2>
+  <div class="social-icons">
+    <a href="https://github.com/Dravis55" target="_blank" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="https://linkedin.com/in/samuelkibunja" target="_blank" aria-label="LinkedIn">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://twitter.com/your_twitter_handle" target="_blank" aria-label="Twitter">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://web.facebook.com/profile.php?id=100090639854287" target="_blank" aria-label="Facebook">
+      <i class="fab fa-facebook"></i>
+    </a>
+    <a href="https://youtube.com/your_channel" target="_blank" aria-label="YouTube">
+      <i class="fab fa-youtube"></i>
+    </a>
+    <a href="https://instagram.com/your_instagram" target="_blank" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://wa.me/254758067458" target="_blank" aria-label="WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="mailto:samuelkibunja55@gmail.com" target="_blank" aria-label="Email">
+      <i class="fas fa-envelope"></i>
+    </a>
+  </div>
+</section>
+
+<!-- Tech Stack Section -->
+<section id="tech-stack" class="card fade-in">
+  <h2>Tech Stack</h2>
+  <p>Technologies I work with:</p>
+  <div class="tech-icons">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" title="HTML5">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" title="CSS3">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" title="JavaScript">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" title="Python">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" title="Django">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" title="React">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" title="PostgreSQL">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" title="MySQL">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" title="Git">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" title="GitHub">
+
+    <!-- Added Java, C, and C++ -->
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" title="Java">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" title="C">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" title="C++">
+  </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer id="footer">
+      <p>&copy; 2025 DravTech | Built by Samuel Kibunja</p>
+    </footer>
+  </main>
+  <button id="scrollTopBtn">&#8679;</button>
+
+<script>
+  // -----------------------------
+  // 1. FADE-IN ON SCROLL
+  // -----------------------------
+  const faders = document.querySelectorAll('.fade-in');
+  const appearOptions = { threshold: 0.2 };
+
+  const appearOnScroll = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => appearOnScroll.observe(fader));
+
+
+  // -----------------------------
+  // 2. SCROLL TO TOP BUTTON
+  // -----------------------------
+  const scrollBtn = document.getElementById("scrollTopBtn");
+
+  window.addEventListener("scroll", () => {
+    scrollBtn.classList.toggle("show", window.scrollY > 300);
+  });
+
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+
+  // -----------------------------
+  // 3. RESPONSIVE MENU TOGGLE
+  // -----------------------------
+  const menuToggle = document.getElementById("menuToggle");
+  const navBar = document.getElementById("nav_bar");
+  const contentBar = document.getElementById("content_bar");
+
+  menuToggle.addEventListener("click", () => {
+    navBar.classList.toggle("active");
+    contentBar.classList.toggle("hidden");
+  });
+
+  // Auto-hide nav and show content when a nav link is clicked (mobile)
+  document.querySelectorAll("#nav_bar a").forEach(link => {
+    link.addEventListener("click", () => {
+      navBar.classList.remove("active");
+      contentBar.classList.remove("hidden");
+    });
+  });
+
+
+  // -----------------------------
+  // 4. ANIMATED BACKGROUND CANVAS
+  // -----------------------------
+  const canvas = document.getElementById("bgCanvas");
+  const ctx = canvas.getContext("2d");
+
+  // Initialize canvas size
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  resizeCanvas(); // initial call
+  window.addEventListener("resize", resizeCanvas);
+
+  let particles = [];
+  const numParticles = 70;
+
+  // Create particles with position, velocity, and size
+  for (let i = 0; i < numParticles; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 1.2,
+      vy: (Math.random() - 0.5) * 1.2,
+      size: 2 + Math.random() * 2
+    });
+  }
+
+  // Animation loop
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Move & draw particles
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+
+      // Bounce off walls
+      if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+      // Draw particle
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = "#08c5ff";
+      ctx.fill();
+    });
+
+    // Connect nearby particles with lines
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 150) {
+          const opacity = 1 - dist / 150;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `hsla(${(Date.now() / 40) % 360}, 80%, 60%, ${opacity})`;
+          ctx.lineWidth = 1.2 + opacity * 1.5;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+</script>
+
+
+
+</body>
+</html>

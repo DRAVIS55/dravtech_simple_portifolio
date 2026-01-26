@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; }
+        .header { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; padding: 2rem; text-align: center; }
+        .content { padding: 2rem; background: #f8fafc; }
+        .footer { padding: 1rem; text-align: center; color: #666; font-size: 0.9rem; border-top: 1px solid #e2e8f0; }
+        .info-box { background: white; border-left: 4px solid #2563eb; padding: 1rem; margin: 1rem 0; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>DravTech Marketplace</h1>
+        <p>Thank You for Your Demo Request</p>
+    </div>
+    
+    <div class="content">
+        <h2>Hello {{ demo_request.full_name }},</h2>
+        
+        <p>Thank you for requesting a demo from DravTech Marketplace. We've received your request and our team will contact you within 24 hours.</p>
+        
+        <div class="info-box">
+            <h3>Request Details:</h3>
+            <p><strong>Request ID:</strong> {{ demo_request.id }}</p>
+            <p><strong>Date:</strong> {{ demo_request.requested_at|date:"F d, Y" }}</p>
+            {% if demo_request.product %}
+            <p><strong>Product:</strong> {{ demo_request.product.name }}</p>
+            {% endif %}
+            {% if demo_request.interest_area %}
+            <p><strong>Interest Area:</strong> {{ demo_request.interest_area }}</p>
+            {% endif %}
+        </div>
+        
+        <p>If you have any immediate questions, feel free to reply to this email or contact us at support@dravtech.com</p>
+        
+        <p>Best regards,<br>The DravTech Team</p>
+    </div>
+    
+    <div class="footer">
+        <p>&copy; 2024 DravTech Marketplace. All rights reserved.</p>
+        <p>123 Tech Street, Silicon Valley</p>
+    </div>
+</body>
+</html>

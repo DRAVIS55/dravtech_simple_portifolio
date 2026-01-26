@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download DravTech Timetable App</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px 20px;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+
+        .btn-download {
+            display: inline-block;
+            background: #ffcc00;
+            color: #1e3c72;
+            font-weight: bold;
+            padding: 14px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .btn-download:hover {
+            background: #ffd633;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            .btn-download {
+                font-size: 1rem;
+                padding: 12px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>DravTech Timetable</h1>
+        <p>Stay organized with our simple and efficient timetable app.<br>
+            Download now for Android!</p>
+        <a href="{% static 'downloads/DravTechTimetable.apk' %}" class="btn-download" download>
+            📥 Download App
+        </a>
+    </div>
+</body>
+
+</html>

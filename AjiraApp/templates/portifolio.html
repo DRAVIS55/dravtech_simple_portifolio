@@ -1,0 +1,285 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRAVTECH - IT Solutions & Services</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class' }
+    </script>
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; }
+        .btn { transition: all 0.3s ease; }
+        .btn:hover { transform: translateY(-3px); background-color: #2563eb; color: white; }
+    </style>
+</head>
+<body class="bg-white text-gray-900 transition-colors duration-500 dark:bg-gray-900 dark:text-gray-100">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full bg-white dark:bg-gray-800 shadow-md z-50 transition-colors duration-500">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <a href="#" class="text-2xl font-bold text-blue-600 dark:text-blue-400">DRAVTECH</a>
+            <div class="space-x-4">
+                <a href="#home" class="hover:text-blue-600 dark:hover:text-blue-400">Home</a>
+                <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400">About</a>
+                <a href="#services" class="hover:text-blue-600 dark:hover:text-blue-400">Services</a>
+                <a href="#projects" class="hover:text-blue-600 dark:hover:text-blue-400">Projects</a>
+                <a href="#team" class="hover:text-blue-600 dark:hover:text-blue-400">Team</a>
+                <a href="#contact" class="hover:text-blue-600 dark:hover:text-blue-400">Contact</a>
+                <button id="themeToggle" class="px-4 py-2 border rounded btn">Dark/Light</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-4" data-aos="fade-up">Welcome to DRAVTECH</h1>
+        <p class="text-xl md:text-2xl mb-6" data-aos="fade-up" data-aos-delay="200">
+            Innovative IT Solutions | Cybersecurity | Web & Software Development
+        </p>
+        <a href="#contact" class="px-6 py-3 bg-white text-blue-600 font-semibold rounded btn" data-aos="fade-up" data-aos-delay="400">Get in Touch</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-100 dark:bg-gray-800 transition-colors duration-500">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-8 text-center" data-aos="fade-right">About Us</h2>
+            <p class="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto text-center" data-aos="fade-left">
+                DRAVTECH is a leading IT solutions provider dedicated to delivering innovative technology services.
+                We specialize in IT support, web design & development, cybersecurity, and software engineering.
+                Our mission is to empower businesses with technology that drives growth and efficiency.
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 transition-colors duration-500">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center" data-aos="fade-up">Our Services</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-6 text-center hover:shadow-2xl transition" data-aos="zoom-in">
+                    <div class="text-5xl mb-4 text-blue-600">🖥️</div>
+                    <h3 class="text-xl font-bold mb-2 dark:text-gray-100">IT Support</h3>
+                    <p class="dark:text-gray-300">Reliable IT support services to keep your systems running smoothly and efficiently.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-6 text-center hover:shadow-2xl transition" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-5xl mb-4 text-purple-600">💻</div>
+                    <h3 class="text-xl font-bold mb-2 dark:text-gray-100">Web Development</h3>
+                    <p class="dark:text-gray-300">Beautiful, responsive, and scalable websites that align with your business goals.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-6 text-center hover:shadow-2xl transition" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-5xl mb-4 text-red-600">🔒</div>
+                    <h3 class="text-xl font-bold mb-2 dark:text-gray-100">Cybersecurity</h3>
+                    <p class="dark:text-gray-300">Comprehensive security solutions to protect your digital assets from evolving threats.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-6 text-center hover:shadow-2xl transition" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="text-5xl mb-4 text-green-600">🛠️</div>
+                    <h3 class="text-xl font-bold mb-2 dark:text-gray-100">Software Engineering</h3>
+                    <p class="dark:text-gray-300">Custom software solutions that streamline operations and improve efficiency.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Projects Section -->
+<section id="projects" class="py-20 bg-gray-100 dark:bg-gray-800 transition-colors duration-500">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold mb-12 text-center" data-aos="fade-up">Our Projects</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- News Hub -->
+            <div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-6 hover:shadow-2xl transition" data-aos="fade-up">
+                <h3 class="text-xl font-bold mb-2 dark:text-gray-100">News Hub</h3>
+                <p class="text-gray-700 dark:text-gray-300 mb-2">Python-based project for news scraping, AI processing, and dashboard analytics.</p>
+                <a href="https://github.com/DRAVIS55/news_hub" target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">View on GitHub</a>
+            </div>
+
+            <!-- Django React SACCO System -->
+            <div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-6 hover:shadow-2xl transition" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-xl font-bold mb-2 dark:text-gray-100">Django-React SACCO System</h3>
+                <p class="text-gray-700 dark:text-gray-300 mb-2">Full-stack SACCO management system using Django backend and React frontend.</p>
+                <a href="https://github.com/DRAVIS55/django-react-sacco-system" target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">View on GitHub</a>
+            </div>
+
+            <!-- Job Portal -->
+            <div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-6 hover:shadow-2xl transition" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-xl font-bold mb-2 dark:text-gray-100">Job Portal</h3>
+                <p class="text-gray-700 dark:text-gray-300 mb-2">Python-based job portal for posting, searching, and applying for jobs.</p>
+                <a href="https://github.com/DRAVIS55/JobPortal" target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">View on GitHub</a>
+            </div>
+
+            <!-- Java Currency Converter -->
+            <div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-6 hover:shadow-2xl transition" data-aos="fade-up">
+                <h3 class="text-xl font-bold mb-2 dark:text-gray-100">Java Currency Converter</h3>
+                <p class="text-gray-700 dark:text-gray-300 mb-2">Java application for converting multiple currencies with a simple GUI.</p>
+                <a href="https://github.com/DRAVIS55/Java-Currency-Converter" target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">View on GitHub</a>
+            </div>
+
+            <!-- University Timetable Portal Analyser -->
+            <div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-6 hover:shadow-2xl transition" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-xl font-bold mb-2 dark:text-gray-100">University Timetable Portal Analyser</h3>
+                <p class="text-gray-700 dark:text-gray-300 mb-2">AI-powered portal that analyzes PDF timetables and displays them in an organized, sorted manner.</p>
+                <a href="https://github.com/DRAVIS55/university-timetable-portal-analyser" target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">View on GitHub</a>
+            </div>
+
+            <!-- Personal Portfolio -->
+            <div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-6 hover:shadow-2xl transition" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-xl font-bold mb-2 dark:text-gray-100">Personal Portfolio</h3>
+                <p class="text-gray-700 dark:text-gray-300 mb-2">My professional portfolio showcasing projects and skills.</p>
+                <a href="https://github.com/DRAVIS55/personal_portfolio" target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">View on GitHub</a>
+            </div>
+
+            <!-- FULL DJANGO -->
+            <div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-6 hover:shadow-2xl transition" data-aos="fade-up">
+                <h3 class="text-xl font-bold mb-2 dark:text-gray-100">FULL-DJANGO</h3>
+                <p class="text-gray-700 dark:text-gray-300 mb-2">Template containing all my Django projects for learning and demonstration purposes.</p>
+                <a href="https://github.com/DRAVIS55/FULL-DJANGO" target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">View on GitHub</a>
+            </div>
+
+            <!-- Chatbot AI -->
+            <div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-6 hover:shadow-2xl transition" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-xl font-bold mb-2 dark:text-gray-100">CHATBOT-AI</h3>
+                <p class="text-gray-700 dark:text-gray-300 mb-2">Simple AI chatbot implemented in Java for conversational interactions.</p>
+                <a href="https://github.com/DRAVIS55/CHATBOT-AI" target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">View on GitHub</a>
+            </div>
+
+            <!-- JAVA Student Implementation File-Based -->
+            <div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-6 hover:shadow-2xl transition" data-aos="fade-up">
+                <h3 class="text-xl font-bold mb-2 dark:text-gray-100">JAVA Student Implementation (File-Based)</h3>
+                <p class="text-gray-700 dark:text-gray-300 mb-2">File-based Java student management system for handling student records.</p>
+                <a href="https://github.com/DRAVIS55/JAVA-STUDENT-IMPLEMENTATION-FILE-BASED" target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">View on GitHub</a>
+            </div>
+
+            <!-- Student Management System with SQL -->
+            <div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-6 hover:shadow-2xl transition" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-xl font-bold mb-2 dark:text-gray-100">Student Management System (Java & SQL)</h3>
+                <p class="text-gray-700 dark:text-gray-300 mb-2">A full student management system implemented using Java with SQL database integration.</p>
+                <a href="https://github.com/DRAVIS55/STUDENT-MANAGEMENT-SYSTEM-IMPLEMENTED-USING-JAVA-AND-SQL" target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">View on GitHub</a>
+            </div>
+
+            <!-- dravsechsacco HTML Project -->
+            <div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-6 hover:shadow-2xl transition" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-xl font-bold mb-2 dark:text-gray-100">dravsechsacco</h3>
+                <p class="text-gray-700 dark:text-gray-300 mb-2">HTML project for SACCO system demonstration.</p>
+                <a href="https://github.com/DRAVIS55/dravsechsacco" target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">View on GitHub</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+    <!-- Team Section -->
+<section id="team" class="py-20 bg-gray-100 dark:bg-gray-800 transition-colors duration-500">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold mb-12 text-center" data-aos="fade-up">Our Team</h2>
+        <div class="grid md:grid-cols-2 gap-12">
+            <!-- Samuel Kibunja (Tech Co-founder / CTO) -->
+            <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 text-center" data-aos="fade-up">
+                <img src="{% static 'assets/dravis.jpg' %}" alt="Samuel Kibunja" class="w-40 h-40 mx-auto rounded-full mb-4 object-cover">
+                <h3 class="text-2xl font-bold dark:text-gray-100">Samuel Kibunja Macharia</h3>
+                <p class="text-gray-700 dark:text-gray-300 mb-2">Computer Scientist (scientist | technologist)</p>
+                <p class="text-gray-700 dark:text-gray-300 mb-2 font-semibold">Tech Co-founder / Chief Technology Officer (CTO)</p>
+
+                <h4 class="text-lg font-bold mt-4 dark:text-gray-100">Primary Focus:</h4>
+                <p class="text-gray-700 dark:text-gray-300 mb-2">Product development, engineering leadership, and technical innovation.</p>
+
+                <h4 class="text-lg font-bold mt-4 dark:text-gray-100">Key Responsibilities:</h4>
+                <ul class="text-gray-700 dark:text-gray-300 text-left list-disc list-inside mb-2">
+                    <li>Design and oversee software architecture</li>
+                    <li>Decide on tech stack, infrastructure, and scalability</li>
+                    <li>Hire, manage, and mentor engineers</li>
+                    <li>Set development processes (Agile, CI/CD, QA practices)</li>
+                    <li>Explore and implement emerging technologies (AI, ML, etc.)</li>
+                    <li>Ensure data security, system reliability, and performance</li>
+                    <li>Align product features with business goals</li>
+                    <li>Manage source code, repository, documentation, and technical IP</li>
+                </ul>
+
+                <p class="text-gray-700 dark:text-gray-300 mt-2">📧 <a href="mailto:dravislotum@gmail.com" class="text-blue-600 dark:text-blue-400 hover:underline">dravislotum@gmail.com</a></p>
+                <p class="text-gray-700 dark:text-gray-300">📧 <a href="mailto:samuelkibunja55@gmail.com" class="text-blue-600 dark:text-blue-400 hover:underline">samuelkibunja55@gmail.com</a></p>
+                <p class="text-gray-700 dark:text-gray-300">🌐 <a href="https://dravis55.pythonanywhere.com" class="text-blue-600 dark:text-blue-400 hover:underline">Personal Site</a></p>
+                <p class="text-gray-700 dark:text-gray-300">📞 0758067458</p>
+            </div>
+
+            <!-- Frendlick Mbugua (Business Co-founder / CEO) -->
+            <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 text-center" data-aos="fade-up" data-aos-delay="100">
+                <img src="{% static 'assets/fredy.jpg' %}" alt="Frendlick Mbugua" class="w-40 h-40 mx-auto rounded-full mb-4 object-cover">
+                <h3 class="text-2xl font-bold dark:text-gray-100">Fredrick Mbugua</h3>
+                <p class="text-gray-700 dark:text-gray-300 mb-2">Economist (Pending Degree in Econ Stat)</p>
+                <p class="text-gray-700 dark:text-gray-300 mb-2 font-semibold">Business Co-founder / Chief Executive Officer (CEO)</p>
+
+                <h4 class="text-lg font-bold mt-4 dark:text-gray-100">Primary Focus:</h4>
+                <p class="text-gray-700 dark:text-gray-300 mb-2">Business strategy, operations, fundraising, growth, and data-driven decision-making.</p>
+
+                <h4 class="text-lg font-bold mt-4 dark:text-gray-100">Key Responsibilities:</h4>
+                <ul class="text-gray-700 dark:text-gray-300 text-left list-disc list-inside mb-2">
+                    <li>Define company's mission, goals, and market positioning</li>
+                    <li>Develop business models and go-to-market strategy</li>
+                    <li>Pitch to investors and manage VC/angel relations</li>
+                    <li>Build partnerships and alliances</li>
+                    <li>Lead sales, marketing, and customer acquisition efforts</li>
+                    <li>Oversee hiring (non-technical roles) and finance</li>
+                    <li>Analyze product usage, market data, and financial metrics</li>
+                    <li>Conduct market research, competitive analysis, and user feedback</li>
+                    <li>Design pricing models and revenue strategies</li>
+                </ul>
+
+                <p class="text-gray-700 dark:text-gray-300 mt-2">📧 <a href="mailto:fredrickmbugua8@gmail.com" class="text-blue-600 dark:text-blue-400 hover:underline">fredlickmbugua8@gmail.com</a></p>
+                <p class="text-gray-700 dark:text-gray-300">📞 0720357085</p>
+            </div>
+        </div>
+
+        <!-- Collaboration / Shared Responsibility -->
+        <div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="200">
+            <h4 class="text-2xl font-bold dark:text-gray-100 mb-4">🧩 Collaboration Areas</h4>
+            <p class="text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+                Both co-founders jointly define product strategy, company culture, long-term vision, and prepare investor presentations.
+                They collaborate to prioritize features based on technical feasibility and market needs.
+            </p>
+        </div>
+    </div>
+</section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 transition-colors duration-500">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h2 class="text-4xl font-bold mb-8 text-center" data-aos="fade-up">Contact Us</h2>
+            <form class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-8 space-y-6 transition-colors duration-500" data-aos="fade-up" data-aos-delay="100" action="{% url 'portifolio' %}" method="POST">
+                {% csrf_token %}
+                <div>
+                    <label class="block mb-2 font-semibold dark:text-gray-100" for="name">Name</label>
+                    <input class="w-full border rounded px-4 py-2 dark:bg-gray-800 dark:text-gray-100" type="text" id="name" placeholder="Your Name" name="name" required>
+                </div>
+                <div>
+                    <label class="block mb-2 font-semibold dark:text-gray-100" for="email">Email</label>
+                    <input class="w-full border rounded px-4 py-2 dark:bg-gray-800 dark:text-gray-100" type="email" id="email" placeholder="Your Email" name="email" required>
+                </div>
+                <div>
+                    <label class="block mb-2 font-semibold dark:text-gray-100" for="message">Message</label>
+                    <textarea class="w-full border rounded px-4 py-2 dark:bg-gray-800 dark:text-gray-100" id="message" rows="5" placeholder="Your Message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="px-6 py-3 bg-blue-600 text-white font-semibold rounded btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 dark:bg-gray-900 text-white text-center py-6 transition-colors duration-500">
+        <p>🚀 Powered by DRAVTECH | <a href="https://github.com/DRAVIS55" target="_blank" class="text-blue-400 hover:underline dark:text-blue-300">Portfolio & GitHub</a></p>
+    </footer>
+
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000 });
+        const toggleBtn = document.getElementById('themeToggle');
+        toggleBtn.addEventListener('click', () => { document.documentElement.classList.toggle('dark'); });
+    </script>
+</body>
+</html>

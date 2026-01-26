@@ -1,0 +1,282 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Live Projects — DravTech</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #111;
+      color: #eee;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    canvas.background {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      text-align: center;
+      margin: 40px 0 20px;
+      color: #08c5ff;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 20px;
+    }
+
+    .device {
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+      height: 500px;
+      border: 15px solid #333;
+      border-radius: 30px;
+      overflow: hidden;
+      background: #000;
+      opacity: 0;
+      transform: translateY(100px);
+      transition: all 1s ease;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+    }
+
+    .device.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .device.laptop {
+      max-width: 500px;
+      height: 300px;
+      border-radius: 15px;
+    }
+
+    .screen {
+      width: 100%;
+      height: 100%;
+      background: #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: pulse 10s infinite alternate;
+    }
+
+    .mock-line {
+      width: 80%;
+      height: 15px;
+      background: #444;
+      border-radius: 5px;
+      margin: 8px 0;
+      animation: slideIn 2s ease-out forwards;
+    }
+
+    .mock-line:nth-child(2) {
+      animation-delay: 0.3s;
+      width: 60%;
+    }
+
+    .mock-line:nth-child(3) {
+      animation-delay: 0.6s;
+      width: 70%;
+    }
+
+    .mock-bubble {
+      background: #0ee066;
+      color: #000;
+      padding: 10px 15px;
+      border-radius: 15px;
+      margin-top: 10px;
+      animation: bubblePop 1s ease-in-out infinite alternate;
+    }
+
+    .mock-ui {
+      width: 90%;
+      height: 90%;
+      background: #0ee06622;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #0ee066;
+      font-weight: bold;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    .project-title {
+      margin-top: 1rem;
+      font-size: 1.2em;
+      color: #0ee066;
+      text-align: center;
+    }
+
+    @keyframes slideIn {
+      0% { transform: translateX(-100%); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes bubblePop {
+      0% { transform: scale(1); opacity: 0.7; }
+      100% { transform: scale(1.1); opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0% { background: #1a1a1a; }
+      100% { background: #222; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Responsive layout */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .device {
+        max-width: 90%;
+        height: 400px;
+      }
+      .device.laptop {
+        max-width: 95%;
+        height: 250px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8em;
+      }
+      .mock-line {
+        height: 10px;
+      }
+      .mock-bubble {
+        font-size: 0.9em;
+        padding: 8px 12px;
+      }
+      .mock-ui {
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas class="background"></canvas>
+
+  <h1>Live Projects</h1>
+  <div class="container">
+    {% for project in projects %}
+      <div class="device {% cycle 'phone' 'laptop' %}">
+        <div class="screen" data-name="{{ project.name }}">
+          <div class="mock-line"></div>
+          <div class="mock-line"></div>
+          <div class="mock-line"></div>
+          <div class="mock-bubble">Loading...</div>
+        </div>
+        <div class="project-title">
+          <a href="https://github.com/DRAVIS55/{{ project.repo }}" target="_blank" style="color: inherit; text-decoration: none;">
+            {{ project.name }}
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const devices = document.querySelectorAll(".device");
+      devices.forEach((device, index) => {
+        setTimeout(() => device.classList.add("visible"), index * 300);
+      });
+
+      // Fake loading UI transition
+      document.querySelectorAll('.screen').forEach(screen => {
+        const name = screen.getAttribute('data-name');
+        setTimeout(() => {
+          screen.innerHTML = `
+            <div class="mock-ui">
+              <div>${name}</div>
+              <div style="font-size: 0.8em; margin-top: 10px;">(Simulated UI)</div>
+            </div>
+          `;
+          screen.style.animation = 'none';
+        }, 2500);
+      });
+
+      // Auto-scroll after delay
+      let scrollY = 0;
+      function autoScroll() {
+        scrollY += 1;
+        if (scrollY < document.body.scrollHeight - window.innerHeight) {
+          window.scrollTo({ top: scrollY, behavior: 'smooth' });
+          requestAnimationFrame(autoScroll);
+        }
+      }
+      setTimeout(autoScroll, 1500);
+    });
+
+    // Canvas background
+    const canvas = document.querySelector("canvas.background");
+    const ctx = canvas.getContext("2d");
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    function updateCanvasSize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+
+    const centerX = () => width / 2;
+    const centerY = () => height / 2;
+
+    const lines = Array.from({ length: 100 }, () => ({
+      dx: (Math.random() - 0.5),
+      dy: (Math.random() - 0.5),
+      color: `hsl(${Math.random() * 360}, 100%, 70%)`
+    }));
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      ctx.globalAlpha = 0.2;
+      ctx.lineWidth = 1.2;
+
+      lines.forEach(line => {
+        ctx.beginPath();
+        ctx.moveTo(centerX(), centerY());
+        ctx.lineTo(centerX() + line.dx * width, centerY() + line.dy * height);
+        ctx.strokeStyle = line.color;
+        ctx.stroke();
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+    window.addEventListener("resize", updateCanvasSize);
+  </script>
+</body>
+</html>

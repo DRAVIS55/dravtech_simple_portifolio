@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500 - Server Error | DravTech Marketplace</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+        :root {
+            --primary-color: #4f46e5;
+            --primary-dark: #4338ca;
+            --secondary-color: #7c3aed;
+            --accent-color: #10b981;
+            --dark-color: #0f172a;
+            --light-color: #f8fafc;
+            --gray-color: #64748b;
+            --danger-color: #ef4444;
+            --warning-color: #f59e0b;
+            --success-color: #10b981;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 20px;
+            position: relative;
+            color: white;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+        }
+
+        .error-container {
+            text-align: center;
+            max-width: 800px;
+            z-index: 1;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .error-code {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 200px;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shake 0.5s ease-in-out infinite alternate, glow 2s ease-in-out infinite alternate;
+            text-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
+            to { text-shadow: 0 0 30px rgba(255, 255, 255, 0.6); }
+        }
+
+        .error-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .error-message {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .error-image {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 40px;
+            position: relative;
+            animation: floatImage 6s ease-in-out infinite;
+        }
+
+        @keyframes floatImage {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(3deg); }
+            66% { transform: translateY(10px) rotate(-3deg); }
+        }
+
+        .error-image svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+        }
+
+        .server-status {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            animation: slideUp 0.8s ease-out 0.3s both;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .status-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .status-list {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .status-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-list li:last-child {
+            border-bottom: none;
+        }
+
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .status-good {
+            background: var(--success-color);
+            box-shadow: 0 0 10px var(--success-color);
+        }
+
+        .status-warning {
+            background: var(--warning-color);
+            box-shadow: 0 0 10px var(--warning-color);
+            animation: pulseWarning 1s infinite;
+        }
+
+        @keyframes pulseWarning {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .status-error {
+            background: var(--danger-color);
+            box-shadow: 0 0 10px var(--danger-color);
+            animation: pulseError 0.5s infinite;
+        }
+
+        @keyframes pulseError {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #ff6b6b;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .error-footer {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-top: 40px;
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        .error-footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: opacity 0.3s ease;
+        }
+
+        .error-footer a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: floatAround 20s infinite linear;
+        }
+
+        @keyframes floatAround {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(100vw, 100vh) rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 150px;
+            }
+            
+            .error-title {
+                font-size: 36px;
+            }
+            
+            .error-message {
+                font-size: 18px;
+                padding: 0 20px;
+            }
+            
+            .error-image {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .server-status {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .error-code {
+                font-size: 120px;
+            }
+            
+            .error-title {
+                font-size: 28px;
+            }
+            
+            .error-message {
+                font-size: 16px;
+            }
+            
+            .error-image {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 500px;
+            margin: 40px auto;
+            animation: slideUp 0.8s ease-out 0.5s both;
+        }
+
+        .contact-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .contact-textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            resize: vertical;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .contact-textarea:focus {
+            outline: none;
+            border-color: white;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .contact-textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .contact-submit {
+            width: 100%;
+            padding: 16px;
+            background: white;
+            color: #ff6b6b;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .contact-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-element" style="width: 100px; height: 100px; top: 10%; left: 5%; animation-delay: 0s;"></div>
+        <div class="floating-element" style="width: 150px; height: 150px; top: 60%; right: 10%; animation-delay: -5s;"></div>
+        <div class="floating-element" style="width: 80px; height: 80px; bottom: 20%; left: 20%; animation-delay: -10s;"></div>
+        <div class="floating-element" style="width: 120px; height: 120px; top: 30%; right: 20%; animation-delay: -15s;"></div>
+    </div>
+
+    <div class="error-container">
+        <div class="error-code">500</div>
+        <div class="error-title">Internal Server Error</div>
+        <div class="error-message">
+            Something went wrong on our end. Our team has been notified and is working to fix the issue.
+            Please try again in a few moments.
+        </div>
+
+        <div class="error-image">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#FFFFFF" d="M52.6,-78.1C66.5,-70.8,75.5,-54.5,80.9,-37.7C86.3,-20.9,88.1,-3.7,85.5,12.7C83,29.1,76.1,44.7,64.8,55.6C53.5,66.4,37.8,72.4,21.8,76.6C5.9,80.8,-10.3,83.2,-24.4,79.5C-38.5,75.8,-50.5,66,-61.1,54.3C-71.7,42.6,-80.8,29,-84.5,13.9C-88.1,-1.2,-86.3,-17.9,-79.5,-32.5C-72.7,-47.1,-60.8,-59.6,-46.5,-66.8C-32.2,-74,-16.1,-75.8,0.7,-76.8C17.5,-77.8,35,-78,52.6,-78.1Z" transform="translate(100 100)" />
+            </svg>
+        </div>
+
+        <div class="server-status">
+            <div class="status-title">
+                <i class="fas fa-server"></i> Server Status
+            </div>
+            <ul class="status-list">
+                <li>
+                    <span class="status-indicator status-error"></span>
+                    <span>Web Server: Offline</span>
+                </li>
+                <li>
+                    <span class="status-indicator status-warning"></span>
+                    <span>Database: Degraded Performance</span>
+                </li>
+                <li>
+                    <span class="status-indicator status-good"></span>
+                    <span>Static Files: Online</span>
+                </li>
+                <li>
+                    <span class="status-indicator status-good"></span>
+                    <span>API Services: Online</span>
+                </li>
+            </ul>
+            <div style="text-align: center; font-size: 14px; opacity: 0.8;">
+                <i class="fas fa-sync-alt fa-spin"></i> Auto-refreshing in <span id="countdown">30</span>s
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <div class="contact-title">Report This Issue</div>
+            <textarea class="contact-textarea" 
+                      placeholder="Please describe what you were doing when the error occurred..."
+                      id="issueDescription"></textarea>
+            <button type="button" class="contact-submit" onclick="submitIssue()">
+                <i class="fas fa-paper-plane"></i> Send Report
+            </button>
+        </div>
+
+        <div class="action-buttons">
+            <button onclick="window.location.reload()" class="btn btn-primary">
+                <i class="fas fa-redo"></i> Refresh Page
+            </button>
+            <a href="{% url 'marketplace_home' %}" class="btn btn-secondary">
+                <i class="fas fa-home"></i> Go to Homepage
+            </a>
+            <a href="javascript:history.back()" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Go Back
+            </a>
+        </div>
+
+        <div class="error-footer">
+            <a href="{% url 'contact' %}">Contact Support</a> • 
+            <a href="{% url 'about_us' %}">About Us</a> • 
+            <a href="{% url 'projects' %}">Our Projects</a> •
+            <a href="#" onclick="checkStatus()">Check Status</a>
+        </div>
+    </div>
+
+    <script>
+        // Countdown timer
+        let countdown = 30;
+        const countdownElement = document.getElementById('countdown');
+        
+        const countdownInterval = setInterval(() => {
+            countdown--;
+            countdownElement.textContent = countdown;
+            
+            if (countdown <= 0) {
+                clearInterval(countdownInterval);
+                window.location.reload();
+            }
+        }, 1000);
+
+        // Issue submission
+        function submitIssue() {
+            const description = document.getElementById('issueDescription').value.trim();
+            if (!description) {
+                alert('Please describe the issue before submitting.');
+                return;
+            }
+            
+            // In a real app, this would send to your error tracking system
+            alert('Thank you for reporting this issue! Our team has been notified.\n\nDescription: ' + description);
+            document.getElementById('issueDescription').value = '';
+            
+            // Show success message
+            const button = document.querySelector('.contact-submit');
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-check"></i> Reported Successfully!';
+            button.style.background = 'var(--success-color)';
+            button.style.color = 'white';
+            
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.style.background = '';
+                button.style.color = '';
+            }, 3000);
+        }
+
+        // Status check
+        function checkStatus() {
+            const statusItems = document.querySelectorAll('.status-list li');
+            statusItems.forEach(item => {
+                const indicator = item.querySelector('.status-indicator');
+                if (indicator.classList.contains('status-error')) {
+                    indicator.classList.remove('status-error');
+                    indicator.classList.add('status-warning');
+                    item.querySelector('span:last-child').textContent = 'Web Server: Recovering...';
+                    
+                    // Simulate recovery
+                    setTimeout(() => {
+                        indicator.classList.remove('status-warning');
+                        indicator.classList.add('status-good');
+                        item.querySelector('span:last-child').textContent = 'Web Server: Online';
+                    }, 2000);
+                }
+            });
+            
+            alert('Status check completed. Server recovery in progress...');
+        }
+
+        // Animate status indicators
+        const errorIndicators = document.querySelectorAll('.status-error');
+        errorIndicators.forEach(indicator => {
+            setInterval(() => {
+                indicator.style.boxShadow = indicator.style.boxShadow === '0 0 20px var(--danger-color)' 
+                    ? '0 0 10px var(--danger-color)' 
+                    : '0 0 20px var(--danger-color)';
+            }, 500);
+        });
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'r' && (e.ctrlKey || e.metaKey)) {
+                e.preventDefault();
+                window.location.reload();
+            } else if (e.key === 'Escape') {
+                window.history.back();
+            } else if (e.key === 'h' && (e.ctrlKey || e.metaKey)) {
+                e.preventDefault();
+                window.location.href = "{% url 'marketplace_home' %}";
+            }
+        });
+
+        // Auto-retry after 30 seconds
+        setTimeout(() => {
+            console.log('Auto-retry attempt...');
+            // In a real app, you might want to check server status before reloading
+        }, 30000);
+
+        // Add visual feedback for buttons
+        document.querySelectorAll('.btn, .contact-submit').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

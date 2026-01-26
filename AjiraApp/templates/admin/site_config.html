@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Configuration - DravTech Admin</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --border-color: #e2e8f0;
+            --radius: 8px;
+            --card-bg: white;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+        }
+        
+        .alert {
+            padding: 1rem;
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+        }
+        
+        .alert-success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .custom-currency-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Site Configuration</h1>
+        
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+        
+        <div class="card">
+            <form method="POST">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label class="form-label">Site Name</label>
+                    <input type="text" class="form-control" name="site_name" 
+                           value="{{ form.site_name.value|default:config.site_name }}" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Admin Email</label>
+                    <input type="email" class="form-control" name="site_email" 
+                           value="{{ form.site_email.value|default:config.site_email }}" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Currency</label>
+                    <select class="form-control" name="currency" id="currencySelect" onchange="toggleCustomCurrency()">
+                        <option value="USD" {% if form.currency.value == "USD" or config.currency == "USD" %}selected{% endif %}>US Dollar ($)</option>
+                        <option value="EUR" {% if form.currency.value == "EUR" or config.currency == "EUR" %}selected{% endif %}>Euro (€)</option>
+                        <option value="GBP" {% if form.currency.value == "GBP" or config.currency == "GBP" %}selected{% endif %}>British Pound (£)</option>
+                        <option value="KES" {% if form.currency.value == "KES" or config.currency == "KES" %}selected{% endif %}>Kenyan Shilling (KSh)</option>
+                        <option value="INR" {% if form.currency.value == "INR" or config.currency == "INR" %}selected{% endif %}>Indian Rupee (₹)</option>
+                        <option value="CNY" {% if form.currency.value == "CNY" or config.currency == "CNY" %}selected{% endif %}>Chinese Yuan (¥)</option>
+                        <option value="CUSTOM" {% if form.currency.value == "CUSTOM" or config.currency == "CUSTOM" %}selected{% endif %}>Custom Currency</option>
+                    </select>
+                </div>
+                
+                <div id="customCurrencyGroup" class="custom-currency-group">
+                    <div class="form-group" style="flex: 1;">
+                        <label class="form-label">Custom Currency Code</label>
+                        <input type="text" class="form-control" name="currency" id="customCurrencyCode" 
+                               placeholder="e.g., BTC, ETH, GHS" maxlength="5"
+                               value="{{ form.currency.value|default:config.currency }}">
+                    </div>
+                    
+                    <div class="form-group" style="flex: 1;">
+                        <label class="form-label">Currency Symbol</label>
+                        <input type="text" class="form-control" name="currency_symbol" id="customCurrencySymbol"
+                               placeholder="e.g., ₿, Ξ, GH₵" maxlength="5"
+                               value="{{ form.currency_symbol.value|default:config.currency_symbol }}">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">
+                        <input type="checkbox" name="is_active" {% if config.is_active %}checked{% endif %}>
+                        Active Configuration
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn">Save Configuration</button>
+                <a href="{% url 'admin_dashboard' %}" style="margin-left: 10px;">Back to Dashboard</a>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function toggleCustomCurrency() {
+            const select = document.getElementById('currencySelect');
+            const customGroup = document.getElementById('customCurrencyGroup');
+            
+            if (select.value === 'CUSTOM') {
+                customGroup.style.display = 'flex';
+                // Set custom values
+                document.getElementById('customCurrencyCode').name = 'currency';
+                document.getElementById('customCurrencySymbol').name = 'currency_symbol';
+                // Remove name from select
+                select.name = '';
+            } else {
+                customGroup.style.display = 'none';
+                // Set standard values
+                select.name = 'currency';
+                // Set symbol based on selection
+                const symbols = {
+                    'USD': '$',
+                    'EUR': '€',
+                    'GBP': '£',
+                    'KES': 'KSh',
+                    'INR': '₹',
+                    'CNY': '¥',
+                };
+                document.getElementById('customCurrencySymbol').value = symbols[select.value] || '$';
+            }
+        }
+        
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleCustomCurrency();
+        });
+    </script>
+</body>
+</html>
