@@ -2433,3 +2433,8 @@ def live(request):
         {'name': 'Calculator', 'repo': 'html-js-and-css-calculator'},
     ]
     return render(request, 'lives.html', {'projects': projects})
+def index(request):
+    return render(request, 'about.html')
+
+def videos(request):
+    return render(request, 'video.html')

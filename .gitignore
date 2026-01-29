@@ -1,0 +1,53 @@
+# Python/Django common ignores
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+*.egg
+build/
+dist/
+.eggs/
+.python-version
+venv/
+ENV/
+env/
+.env
+
+# Django
+db.sqlite3
+media/exports/
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+
+# Node
+node_modules/
+
+# Video files (ignore common video formats anywhere in the repo)
+# This will ignore individual files like sample.mp4, uploads/video.mov, etc.
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.flv
+*.wmv
+*.mpg
+*.mpeg
+*.3gp
+
+# If you prefer to only ignore video files inside the media uploads folder,
+# uncomment the following lines instead of the global patterns above:
+# /media/videos/
+# /media/**/*.mp4
+# /media/**/*.mov
+
+# Keep static and other media files tracked; only video files will be ignored
+
+# Misc
+.DS_Store
+thumbs.db
+
+# End of .gitignore

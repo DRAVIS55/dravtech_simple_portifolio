@@ -6,6 +6,8 @@ from django.conf.urls.static import static
 from . import views, tests
 
 urlpatterns = [
+    path('video/', views.videos, name='videos'),
+    path('about/', views.index, name='about'),
     # =============================================================================
     # Main Admin Dashboard
     # =============================================================================
